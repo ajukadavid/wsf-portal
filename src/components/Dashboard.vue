@@ -5,9 +5,14 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <div class="h-screen bg-gradient-to-b from-gray-200 via-gray-400 to-gray-600">
-    <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 ml-5 p-3" />
-    <div class="text-4xl  justify-center flex items-center  h-3/4 w-screen">
+  <div class="h-screen bg-gradient-to-b from-red-200 to-red-600">
+    <div class="flex justify-between">
+      <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 ml-5 p-3" />
+    <p class="mt-8 text-4xl mr-20">Living Faith Church WSF Platform</p>
+    <span></span>
+    </div>
+ 
+    <div class="justify-center flex items-center flex-col h-3/4 w-screen">
       <div class="w-2/4">
         <form class="flex items-center">
           <label for="simple-search" class="sr-only">Search</label>
@@ -21,11 +26,11 @@ import { ref } from 'vue'
               </svg>
             </div>
             <input type="text" id="simple-search"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border border-gray-300 text-white text-sm rounded-lg focus:ring-red-200 focus:border-red-200 block w-full pl-10 p-2.5  dark:bg-white dark:border-red-600 dark:placeholder-red-400 dark:text-white dark:focus:ring-red-200 dark:focus:border-red-200"
               placeholder="Search" required>
           </div>
           <button type="submit"
-            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-red-400 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-red-600 dark:hover:bg-red-400 dark:focus:ring-blue-800">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,20 +39,60 @@ import { ref } from 'vue'
             <span class="sr-only">Search</span>
           </button>
         </form>
-        <div>
-      <div>
+      </div>
+
+
+      <div class="grid grid-cols-4 gap-4 w-3/4">
         <div
-          class="p-2 mt-10 w-60 bg-white rounded-sm flex border border-gray-200 shadow-md dark:bg-white dark:border-gray-100">
-         
-        </div>
-      </div>
-        </div>
+              class="p-5 mt-10 w-60 bg-white rounded-sm border border-gray-200  drop-shadow-2xl dark:bg-white dark:border-gray-100">
+              <div class="flex justify-between">
+                <div>
+                  <span class="material-icons my-auto text-gray-700 text-4xl fw-900">
+                    man
+                  </span>
+                </div>
+                <p class="text-xl mr-4 mt-1">Male Count</p>
+              </div>
+              <p>50</p>
+            </div>
+            <div
+              class="p-5 mt-10 w-60 bg-white rounded-sm border border-gray-200  drop-shadow-2xl dark:bg-white dark:border-gray-100">
+              <div class="flex justify-between">
+                <div>
+                  <span class="material-icons my-auto text-gray-700 text-4xl fw-900">
+                    woman
+                  </span>
+                </div>
+                <p class="text-xl mr-4 mt-1">Female Count</p>
+              </div>
+              <p>50</p>
+            </div>
+            <div
+              class="p-5 mt-10 w-60 bg-white rounded-sm border border-gray-200  drop-shadow-2xl dark:bg-white dark:border-gray-100">
+              <div class="flex justify-between">
+                <div>
+                  <span class="material-icons my-auto text-gray-700 text-4xl fw-900">
+                    child_care
+                  </span>
+                </div>
+                <p class="text-xl mr-4 mt-1">Children</p>
+              </div>
+              <p>50</p>
+            </div>
+            <div
+              class="p-5 mt-10 w-60 bg-white rounded-sm border border-gray-200  drop-shadow-2xl dark:bg-white dark:border-gray-100">
+              <div class="flex justify-between">
+                <div>
+                  <span class="material-icons my-auto text-gray-700 text-4xl fw-900">
+                    campaign
+                  </span>
+                </div>
+                <p class="text-xl mr-4 mt-1">Testimonies</p>
+              </div>
+              <p>50</p>
+            </div>
 
-
-      </div>
-     
-
-
+          </div>
     </div>
 
   </div>
