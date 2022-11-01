@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <main>
+    <main class="grid h-screen place-items-center">
         <form>
             this is sign up route
         </form>

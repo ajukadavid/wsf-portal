@@ -22,9 +22,9 @@ const router = createRouter({
             component: MinisterDashboard
         },
         {
-            path: '/minister:id?', 
-            name: 'MinisterDashboard',
-            component: MinisterDashboard
+            path: '/sign-up', 
+            name: 'SignUp',
+            component: SignUp
         },
 
     ],
