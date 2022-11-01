@@ -4,17 +4,30 @@ import './style.css'
 import App from './App.vue'
 import SpDashboard from '../src/components/SpDashboard.vue'
 import MinisterDashboard from '../src/components/MinisterDashboard.vue'
+import SignUp from '../src/components/SignUp.vue'
 import './styles/app.css'; 
 
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/', name: 'SpDashboard', component: SpDashboard},
-        {path: '/minister', name: 'MinisterDashboard', component: MinisterDashboard},
+        {
+            path: '/', 
+            name: 'SpDashboard', 
+            component: SpDashboard
+        },
+        {
+            path: '/minister:id?', 
+            name: 'MinisterDashboard',
+            component: MinisterDashboard
+        },
+        {
+            path: '/minister:id?', 
+            name: 'MinisterDashboard',
+            component: MinisterDashboard
+        },
 
-    ]
-
+    ],
 })
 
 
