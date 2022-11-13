@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRoute, useRouter } from "vue-router";
+
+const $router = useRouter()
+
+const handleSignUpNavigate = () => {
+  $router.push({name: "SignUp"})
+}
 
 
 </script>
@@ -9,7 +16,7 @@ import { ref } from 'vue'
     <div class="flex justify-between">
       <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 ml-5 p-3" />
     <p class="mt-8 text-4xl mr-20">Living Faith Church WSF Platform</p>
-    <span></span>
+    <span class="mr-10 mt-5 cursor-pointer text-white " @click="handleSignUpNavigate">Sign up</span>
     </div>
  
     <div class="justify-center flex items-center flex-col h-3/4 w-screen">
