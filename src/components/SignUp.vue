@@ -14,8 +14,11 @@
            <input type="email" placeholder="Email" class="mt-6 p-4 w-full shadow-md rounded border-0"/>
            <input type="password" placeholder="Password" class="mt-6 p-4 w-full shadow-md rounded border-0"/>
            </div>
-           <button type="submit" class="bg-buttonColor">Submit</button>
+           <button type="submit" class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
         </form>
+        <div>
+            
+        </div>
     </main>
 
 </template>
