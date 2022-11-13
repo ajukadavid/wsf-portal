@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^9.5.0",
+    "@vueuse/firebase": "^9.5.0",
+    "firebase": "^9.14.0",
     "material-icons": "^1.11.11",
     "vue": "^3.2.37",
     "vue-router": "4"

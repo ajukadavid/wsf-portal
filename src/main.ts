@@ -5,6 +5,8 @@ import App from './App.vue'
 import SpDashboard from '../src/components/SpDashboard.vue'
 import MinisterDashboard from '../src/components/MinisterDashboard.vue'
 import SignUp from '../src/components/SignUp.vue'
+import Login from '../src/components/Login.vue'
+
 import './styles/app.css'; 
 
 
@@ -25,6 +27,11 @@ const router = createRouter({
             path: '/sign-up', 
             name: 'SignUp',
             component: SignUp
+        },
+        {
+            path: '/log-in', 
+            name: 'Login',
+            component: Login
         },
 
     ],

@@ -15,10 +15,11 @@
            <input type="password" placeholder="Password" class="mt-6 p-4 w-full shadow-md rounded border-0"/>
            </div>
            <button type="submit" class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
-        </form>
-        <div>
-            
+           <div class="mt-3 ml-2">
+            <span>Already have an account? </span> <span class="text-blue-500">Sign in</span>
         </div>
+        </form>
+        
     </main>
 
 </template>
