@@ -68,6 +68,16 @@ export const getAreas =  async() => {
   }
 }
 
+export const getAllAreas =  async(provinceCode:string) => {
+  try {
+      const res = await axios.get(`${BASE_URL}/System/GetAllAreas/${provinceCode}`, config)
+      return res.data
+  } catch (error) {
+        return error
+  }
+}
+
+
 
 //ZONES
 
