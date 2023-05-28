@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import { auth } from '../firebase/firebase'
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
 
-const router = useRouter();
+const $router = useRouter();
 const email = ref("");
 const username = ref("")
 const password = ref("");
@@ -60,7 +60,7 @@ const register = async () => {
             <button @click.prevent="register" type="submit"
                 class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
             <div class="mt-3 ml-2">
-                <span>Already have an account? </span> <span class="text-blue-500">Sign in</span>
+                <span>Already have an account? </span> <span @click="$router.push('/sign-up')" class="text-blue-500 cursor-pointer">Sign in</span>
             </div>
         </form>
 

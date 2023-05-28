@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const $router = useRouter()
 
 </script>
 
@@ -12,14 +15,11 @@
             <div class="w-80">
                 <input type="email" placeholder="Email" class="mt-6 p-4 w-full shadow-md rounded border-0" />
                 <input type="password" placeholder="Password" class="mt-6 p-4 w-full shadow-md rounded border-0" />
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
+            
             </div>
             <button type="submit" class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
             <div class="mt-3 ml-2">
-                <span>Already have an account? </span> <span class="text-blue-500">Sign in</span>
+                <span>Already have an account? </span> <span @click="$router.push('/log-in')" class="text-blue-500 cursor-pointer">Sign in</span>
             </div>
         </form>
         
