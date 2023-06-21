@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { ref } from 'vue'
+import { handleLogin } from '../composables/auth/useAuth'
 
+const email = ref('')
+const password = ref('')
 const $router = useRouter()
 
 </script>
@@ -13,13 +17,13 @@ const $router = useRouter()
             </div>
             <p>Enter your email and password to sign in</p>
             <div class="w-80">
-                <input type="email" placeholder="Email" class="mt-6 p-4 w-full shadow-md rounded border-0" />
-                <input type="password" placeholder="Password" class="mt-6 p-4 w-full shadow-md rounded border-0" />
+                <input type="email" v-model="email" placeholder="Email" class="mt-6 p-4 w-full shadow-md rounded border-0" />
+                <input type="password" v-model="password" placeholder="Password" class="mt-6 p-4 w-full shadow-md rounded border-0" />
             
             </div>
-            <button type="submit" class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
+            <button @click="handleLogin(email, password)" type="submit" class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
             <div class="mt-3 ml-2">
-                <span>Already have an account? </span> <span @click="$router.push('/log-in')" class="text-blue-500 cursor-pointer">Sign in</span>
+                <span>Don't have an account? </span> <span @click="$router.push({name: 'SignUp'})" class="text-blue-500 cursor-pointer">Sign up</span>
             </div>
         </form>
         

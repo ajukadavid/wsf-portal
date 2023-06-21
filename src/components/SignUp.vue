@@ -60,7 +60,7 @@ const register = async () => {
             <button @click.prevent="register" type="submit"
                 class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
             <div class="mt-3 ml-2">
-                <span>Already have an account? </span> <span @click="$router.push('/sign-up')" class="text-blue-500 cursor-pointer">Sign in</span>
+                <span>Already have an account? </span> <span @click="$router.push({name: 'Login'})" class="text-blue-500 cursor-pointer">Sign in</span>
             </div>
         </form>
 
