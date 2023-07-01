@@ -9,7 +9,7 @@ module.exports = {
     colors: {
       ...colors,
       'buttonColor': '#FA4747',
-      'accentColor': '#70bfe1'
+      'accentColor': '#ED3236'
     }
   },
   variants: {

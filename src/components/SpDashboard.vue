@@ -2,12 +2,14 @@
 import { onMounted, computed, ref } from 'vue'
 import { useRouter } from "vue-router";
 import createModal from './createModal.vue'
+import provinceForm from './provinceForm.vue'
 import { useAppStore } from '../stores/appStore'
 
 
 const $router = useRouter()
 const store = useAppStore()
 const showModal = ref(false)
+const modalAction = ref('')
 
 const user = computed(() => {
   return store.user
@@ -15,6 +17,11 @@ const user = computed(() => {
 
 const handleSignUpNavigate = () => {
   $router.push({ name: "SignUp" })
+}
+
+const handleOpenModal = (action: string) => {
+  modalAction.value = action
+  showModal.value = true
 }
 
 const handleClose = () => {
@@ -44,7 +51,7 @@ onMounted(() => {
         <span class="text-4xl font-bold">Hello, {{ user.lastName }}!</span>
       </div>
       <div class="w-full flex items-center justify-between gap-7 mt-5">
-        <div
+        <div @click="handleOpenModal('Province')"
           class="flex justify-center items-center text-white hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons">
             add_circle
@@ -53,7 +60,7 @@ onMounted(() => {
             Add province
           </span>
         </div>
-        <div @click="showModal = true"
+        <div
           class="flex justify-center items-center text-white  hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons">
             add_circle
@@ -85,7 +92,12 @@ onMounted(() => {
 
   </div>
 
-  <createModal v-if="showModal" @update:close="handleClose" />
+  <createModal v-if="showModal" @update:close="handleClose">
+    <template #header>
+      Create {{ modalAction }}
+    </template>
+    <provinceForm v-if="modalAction === 'Province'"></provinceForm>
+  </createModal>
 </template>
 
 <style scoped></style>
