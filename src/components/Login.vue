@@ -8,8 +8,7 @@ const $router = useRouter()
 
 const userLogin = async () => {
   const data = await handleLogin(email.value, password.value)
-
-  console.log(data)
+  $router.push('/')
 }
 
 </script>
