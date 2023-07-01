@@ -2,12 +2,25 @@
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import { handleLogin } from '../composables/auth/useAuth'
+import { useAppStore } from '../stores/appStore'
+
 const email = ref('diamondtivere@yahoo.com')
 const password = ref('honest')
 const $router = useRouter()
+const store = useAppStore()
+
 
 const userLogin = async () => {
-  const data = await handleLogin(email.value, password.value)
+
+  let user = {
+    firstName: '',
+    fullName: '',
+    id: ''
+
+  }
+  const data = await handleLogin(email.value, password.value, user)
+  store.user.lastName = data.fullName
+  store.user.id = data.id
   $router.push('/')
 }
 

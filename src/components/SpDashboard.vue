@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from "vue-router";
+import { onMounted } from 'vue'
+import { useRouter } from "vue-router";
+import { useAppStore } from '../stores/appStore'
 
 
 const $router = useRouter()
+const store = useAppStore()
 
 const handleSignUpNavigate = () => {
   $router.push({ name: "SignUp" })
 }
 
 onMounted(() => {
+  console.log(store.user)
   console.log(localStorage.getItem('token'))
 })
 

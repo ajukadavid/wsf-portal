@@ -5,7 +5,8 @@ export const useAppStore = defineStore('userDetails', () => {
     const user = {
         firstName: '',
         lastName: '',
-        userRole: ''
+        userRole: '',
+        id: ''
 
     }
   
