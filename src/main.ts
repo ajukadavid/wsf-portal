@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory  } from 'vue-router';
+import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 import SpDashboard from '../src/components/SpDashboard.vue'
@@ -37,5 +38,7 @@ const router = createRouter({
     ],
 })
 
+const pinia = createPinia()
 
-createApp(App).use(router).mount('#app')
+
+createApp(App).use(router).use(pinia).mount('#app')
