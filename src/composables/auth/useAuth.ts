@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { useAppStore } from '../../stores/appStore'
+import { useStorage } from '@vueuse/core'
+const store = useAppStore()
 
 
 export const handleLogin = async (userName:string, password:string) => {
@@ -7,9 +10,13 @@ export const handleLogin = async (userName:string, password:string) => {
         password
       })
       .then(function (response) {
-        console.log(response);
+        store.user.firstName = response.data.firstName
+        store.user.userRole = response.data.userRole
+        store.user.lastName = response.data.fullName
+
+        console.log(store)
       })
       .catch(function (error) {
         console.log(error);
-      });
+      })
 }
