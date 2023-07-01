@@ -4,8 +4,8 @@ import { createPinia } from 'pinia'
 import './style.css'
 import App from './App.vue'
 import SpDashboard from '../src/components/SpDashboard.vue'
-import MinisterDashboard from '../src/components/MinisterDashboard.vue'
-import SignUp from '../src/components/SignUp.vue'
+import MinisterDashboard from '../src/views/MinisterDashboard.vue'
+import SignUp from '../src/views/SignUp.vue'
 import Login from '../src/components/Login.vue'
 
 import './styles/app.css'; 

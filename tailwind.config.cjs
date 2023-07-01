@@ -8,7 +8,8 @@ module.exports = {
     extend: {},
     colors: {
       ...colors,
-      'buttonColor': '#FA4747'
+      'buttonColor': '#FA4747',
+      'accentColor': '#70bfe1'
     }
   },
   variants: {
