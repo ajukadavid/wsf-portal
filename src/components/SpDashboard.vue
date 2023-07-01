@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import { useRouter } from "vue-router";
+import createModal from './createModal.vue'
 import { useAppStore } from '../stores/appStore'
 
 
 const $router = useRouter()
 const store = useAppStore()
+const showModal = ref(false)
 
 const user = computed(() => {
   return store.user
@@ -13,6 +15,10 @@ const user = computed(() => {
 
 const handleSignUpNavigate = () => {
   $router.push({ name: "SignUp" })
+}
+
+const handleClose = () => {
+  showModal.value = false
 }
 
 onMounted(() => {
@@ -47,7 +53,7 @@ onMounted(() => {
             Add province
           </span>
         </div>
-        <div
+        <div @click="showModal = true"
           class="flex justify-center items-center text-white  hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons">
             add_circle
@@ -78,6 +84,8 @@ onMounted(() => {
     </div>
 
   </div>
+
+  <createModal v-if="showModal" @update:close="handleClose" />
 </template>
 
 <style scoped></style>
