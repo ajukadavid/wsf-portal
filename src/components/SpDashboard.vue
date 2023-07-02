@@ -52,7 +52,8 @@ onMounted(() => {
       </div>
       <div class="w-full flex items-center justify-between gap-7 mt-5">
         <div @click="handleOpenModal('Province')"
-          class="flex justify-center items-center text-white hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
+          class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
+
           <span class="material-icons">
             add_circle
           </span>
@@ -61,7 +62,7 @@ onMounted(() => {
           </span>
         </div>
         <div
-          class="flex justify-center items-center text-white  hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
+          class="flex justify-center items-center text-white  shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons">
             add_circle
           </span>
@@ -70,7 +71,7 @@ onMounted(() => {
           </span>
         </div>
         <div
-          class="flex justify-center items-center text-white hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
+          class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons text-4xl">
             add_circle
           </span>
@@ -79,7 +80,7 @@ onMounted(() => {
           </span>
         </div>
         <div
-          class="flex justify-center items-center text-white hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
+          class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons">
             add_circle
           </span>

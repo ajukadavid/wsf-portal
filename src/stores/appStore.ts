@@ -8,7 +8,8 @@ export const useAppStore = defineStore('userDetails', () => {
         id: ''
 
     }
+    const baseUrl = 'http://102.67.32.92:8089'
   
   
-    return { user }
+    return { user, baseUrl }
   })
