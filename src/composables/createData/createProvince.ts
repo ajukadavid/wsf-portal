@@ -6,7 +6,7 @@ export const createProvince = async (provinceCode:string, provinceName:string, p
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
-    await axios.post(`${BASE_URL}/api/Province/CreateProvince`, {
+    await axios.post(`${BASE_URL}/Province/CreateProvince`, {
         provinceCode,
         provinceName,
         provinceAddress,
