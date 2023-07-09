@@ -11,9 +11,13 @@ const handleCreateProvince = async () => {
 
     try {
         const response = await createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
-        console.log(response);
-    } catch (error) {
-        console.log('Error:', error);
+        if (response.status !== 200) {
+            ErrMsg.value = response.response.data.responseDescription
+        } else {
+
+        }
+    } catch {
+        //
     }
 }
 
@@ -44,7 +48,7 @@ const handleCreateProvince = async () => {
                 </label>
             </div>
             <div class="text-red-500">
-
+                <span>{{ ErrMsg }}</span>
             </div>
             <button @click="handleCreateProvince" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">Create
                 province</button>
