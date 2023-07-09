@@ -24,7 +24,7 @@ const handleLogOut = () => {
 
         </div>
         <div v-if="showDrop"
-            class="absolute w-[100px] right-[20px] top-[55px] px-2 h-[40px] shadow-lg border border-gray-50 items-center justify-center flex flex-col">
+            class="absolute w-[100px] right-[20px] bg-white top-[55px] px-2 h-[40px] shadow-lg border border-gray-50 items-center justify-center flex flex-col">
             <span @click="handleLogOut" class="hover:text-red-300 cursor-pointer mx-3">Log out</span>
         </div>
     </div>

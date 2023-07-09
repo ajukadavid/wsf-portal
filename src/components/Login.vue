@@ -3,15 +3,16 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import { handleLogin } from '../composables/auth/useAuth'
 import { useAppStore } from '../stores/appStore'
+import createSpinner from './createSpinner.vue';
 
 const email = ref('diamondtivere@yahoo.com')
 const password = ref('honest')
 const $router = useRouter()
 const store = useAppStore()
-
+const showSpinner = ref(false)
 
 const userLogin = async () => {
-
+  showSpinner.value = true
   let user = {
     firstName: '',
     fullName: '',
@@ -21,6 +22,7 @@ const userLogin = async () => {
   const data = await handleLogin(email.value, password.value, user)
   store.user.lastName = data.fullName
   store.user.id = data.id
+  showSpinner.value = false
   $router.push('/')
 }
 
@@ -39,8 +41,14 @@ const userLogin = async () => {
           class="mt-6 p-4 w-full shadow-md rounded border-0" />
 
       </div>
-      <button @click="userLogin" type="submit"
-        class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">Submit</button>
+      <div class="flex items-center justify-center">
+        <createSpinner v-if="showSpinner" class="mt-8" />
+        <button v-else @click="userLogin" type="submit"
+          class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">
+          Submit
+        </button>
+      </div>
+
       <div class="mt-3 ml-2">
         <span>Don't have an account? </span> <span @click="$router.push({ name: 'SignUp' })"
           class="text-blue-500 cursor-pointer">Sign up</span>
