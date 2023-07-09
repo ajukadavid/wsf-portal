@@ -24,8 +24,13 @@ const handleLogOut = () => {
 
         </div>
         <div v-if="showDrop"
-            class="absolute w-[100px] right-[20px] bg-white top-[55px] px-2 h-[40px] shadow-lg border border-gray-50 items-center justify-center flex flex-col">
-            <span @click="handleLogOut" class="hover:text-red-300 cursor-pointer mx-3">Log out</span>
+            class="absolute cursor-pointer w-[200px] right-[20px] bg-white top-[55px] px-2 h-[120px] shadow-lg border border-gray-50 gap-2 justify-start items-start flex flex-col">
+            <span class="hover:text-gr-300 hover:text-gray-600 mx-3">View Dashboard Summary</span>
+
+            <span class="hover:text-gr-300 hover:text-gray-600  mx-3">Create Branches</span>
+            <span @click="handleLogOut" class="hover:text-red-300  mx-3">Log out</span>
+
+
         </div>
     </div>
 </template>

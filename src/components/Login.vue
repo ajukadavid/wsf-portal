@@ -48,7 +48,6 @@ const userLogin = async () => {
           Submit
         </button>
       </div>
-      x
       <div class="mt-3 ml-2">
         <span>Don't have an account? </span> <span @click="$router.push({ name: 'SignUp' })"
           class="text-blue-500 cursor-pointer">Sign up</span>
