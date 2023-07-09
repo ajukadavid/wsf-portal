@@ -24,18 +24,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:close', 'update:handleCreate'])
 
-const handleClose = () => {
 
-}
 
-const handleCreate = () => {
-    emit('update:handleCreate', event)
-    event.description = '';
-    event.name = ''
-}
 </script>
 <template>
-    <div @click.self="handleClose" class="modal-overlay">
+    <div @click.self="emit('update:close', false)" class="modal-overlay">
         <div class="modal">
             <div class="border-b py-5 font-bold px-8 border-slate-300 flex justify-between">
                 <slot name="header"></slot>

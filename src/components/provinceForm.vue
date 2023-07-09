@@ -5,6 +5,7 @@ import { createProvince } from '../composables/createData/createProvince'
 const provinceCode = ref('')
 const provinceName = ref('')
 const provinceAddress = ref('')
+const ErrMsg = ref('')
 
 const handleCreateProvince = () => {
     let b = createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
@@ -37,7 +38,9 @@ const handleCreateProvince = () => {
                         class="p-4 w-full shadow-md rounded border-0" placeholder="Province Address" />
                 </label>
             </div>
+            <div class="text-red-500">
 
+            </div>
             <button @click="handleCreateProvince" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">Create
                 province</button>
         </form>

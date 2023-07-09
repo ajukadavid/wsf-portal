@@ -29,8 +29,12 @@ const handleClose = () => {
 }
 
 onMounted(() => {
-  // console.log(store.user)
-  // console.log(localStorage.getItem('token'))
+  let token = localStorage.getItem('token')
+  // if (!!token) {
+  //   //todo: api call to get user details
+  // } else {
+  //   $router.push('/log-in')
+  // }
 })
 
 
@@ -38,13 +42,6 @@ onMounted(() => {
 
 <template>
   <div class="h-screen">
-    <div class="flex justify-between px-5">
-      <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 p-3" />
-      <p class="mt-8 text-4xl mr-20">Living Faith Church WSF Platform</p>
-      <span class="cursor-pointer material-icons my-auto text-gray-700 text-5xl fw-900 ">
-        account_circle
-      </span>
-    </div>
 
     <div class="flex mt-10 mx-10 flex-col">
       <div>
