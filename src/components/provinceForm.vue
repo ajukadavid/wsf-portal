@@ -7,9 +7,14 @@ const provinceName = ref('')
 const provinceAddress = ref('')
 const ErrMsg = ref('')
 
-const handleCreateProvince = () => {
-    let b = createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
-    console.log(b)
+const handleCreateProvince = async () => {
+
+    try {
+        const response = await createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
+        console.log(response);
+    } catch (error) {
+        console.log('Error:', error);
+    }
 }
 
 </script>
