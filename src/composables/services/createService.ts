@@ -4,7 +4,7 @@ import { getItemWithExpiry } from "../auth/useAuth";
 
 
 export const createProvince = async (provinceCode: string, provinceName: string, provinceAddress: string) => {
-  const token = localStorage.getItem('token');
+  const token = getItemWithExpiry('token');
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
@@ -23,7 +23,6 @@ export const createProvince = async (provinceCode: string, provinceName: string,
 
 export const createArea = async (provinceCode: string, areaCode: string ,areaName: string, areaAddress: string) => {
   const token = getItemWithExpiry('token');
-  console.log(token)
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };

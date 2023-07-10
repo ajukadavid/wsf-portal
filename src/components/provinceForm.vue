@@ -17,7 +17,7 @@ const handleCreateProvince = async () => {
         if (response.status !== 200) {
             ErrMsg.value = response.response.data.responseDescription
         } else {
-
+            showSuccess.value = true
         }
     } catch {
         //
@@ -69,4 +69,4 @@ const handleCreateProvince = async () => {
             </span>
         </div>
     </div>
-</template>../composables/createData/createService../composables/services/createProvince
+</template>

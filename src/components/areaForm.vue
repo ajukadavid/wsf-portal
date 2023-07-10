@@ -18,7 +18,7 @@ const handleCreateArea = async () => {
         if (response.status !== 200) {
             ErrMsg.value = response.response.data.responseDescription
         } else {
-
+            showSuccess.value = true
         }
     } catch {
         //
@@ -69,8 +69,8 @@ const handleCreateArea = async () => {
                     Area</button>
             </div>
         </form>
-        <div v-else class="flex items-center justify-center w-full">
-            <span class="material-icons text-green-600 text-8xl">
+        <div v-else class="flex items-center justify-center w-full h-[400px]">
+            <span class="material-icons text-green-600 text-[150px]">
                 check_circle
             </span>
         </div>
