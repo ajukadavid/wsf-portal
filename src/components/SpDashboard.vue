@@ -3,6 +3,7 @@ import { onMounted, computed, ref } from 'vue'
 import { useRouter } from "vue-router";
 import createModal from './createModal.vue'
 import provinceForm from './provinceForm.vue'
+import areaForm from './areaForm.vue';
 import { useAppStore } from '../stores/appStore'
 
 
@@ -15,9 +16,6 @@ const user = computed(() => {
   return store.user
 })
 
-const handleSignUpNavigate = () => {
-  $router.push({ name: "SignUp" })
-}
 
 const handleOpenModal = (action: string) => {
   modalAction.value = action
@@ -30,11 +28,11 @@ const handleClose = () => {
 
 onMounted(() => {
   let token = localStorage.getItem('token')
-  // if (!!token) {
-  //   //todo: api call to get user details
-  // } else {
-  //   $router.push('/log-in')
-  // }
+  if (!!token) {
+    //todo: api call to get user details
+  } else {
+    $router.push('/log-in')
+  }
 })
 
 
@@ -42,7 +40,6 @@ onMounted(() => {
 
 <template>
   <div class="h-screen">
-
     <div class="flex mt-10 mx-10 flex-col">
       <div>
         <span class="text-4xl font-bold">Hello, {{ user.lastName }}!</span>
@@ -50,17 +47,16 @@ onMounted(() => {
       <div class="w-full flex items-center justify-between gap-7 mt-5">
         <div @click="handleOpenModal('Province')"
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
-
-          <span class="material-icons">
+          <span class="material-icons text-4xl">
             add_circle
           </span>
           <span>
             Add province
           </span>
         </div>
-        <div
+        <div @click="handleOpenModal('Area')"
           class="flex justify-center items-center text-white  shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
-          <span class="material-icons">
+          <span class="material-icons text-4xl">
             add_circle
           </span>
           <span>
@@ -78,7 +74,7 @@ onMounted(() => {
         </div>
         <div
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
-          <span class="material-icons">
+          <span class="material-icons text-4xl">
             add_circle
           </span>
           <span>
@@ -87,14 +83,15 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
   </div>
 
   <createModal v-if="showModal" @update:close="handleClose">
     <template #header>
       Create {{ modalAction }}
     </template>
-    <provinceForm v-if="modalAction === 'Province'"></provinceForm>
+    <provinceForm v-if="modalAction === 'Province'" />
+    <areaForm v-if="modalAction === 'Area'" />
+
   </createModal>
 </template>
 

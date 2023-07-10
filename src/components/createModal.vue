@@ -1,30 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
-
-interface Event {
-    name: string,
-    description: string
-}
-
-const event = reactive<Event>({
-    name: '',
-    description: ''
-})
-
-interface Props {
-    note?: string;
-    description?: string;
-    err?: string
-}
-
-
-const props = withDefaults(defineProps<Props>(), {
-
-});
-
 const emit = defineEmits(['update:close', 'update:handleCreate'])
-
-
 
 </script>
 <template>

@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-function setWithExpiry(key:string, value:string, expiryTime:number) {
-  const now = new Date()
+function setItemWithExpiry(key:string, value:string, expiryTimeInMinutes:number) {
+  const now = new Date();
+  const expiryTimestamp = now.getTime() + (expiryTimeInMinutes * 60 * 1000);
   const item = {
     value: value,
-    expiry: now.getTime() + expiryTime,
-  }
-  localStorage.setItem(key, JSON.stringify(item))
+    expiry: expiryTimestamp
+  };
+  localStorage.setItem(key, JSON.stringify(item));
 }
 
 export const handleLogin = async (userName:string, password:string, user:any) => {
@@ -15,7 +16,7 @@ export const handleLogin = async (userName:string, password:string, user:any) =>
         password
       })
       .then(function (response) {
-        setWithExpiry("token", response.data.token, 345600000)
+        setItemWithExpiry("token", response.data.token, 5760)
         user.fullName = response.data.fullName
         user.id = response.data.userId
         user.firstName = response.data.firstName
@@ -25,4 +26,18 @@ export const handleLogin = async (userName:string, password:string, user:any) =>
       })
 
       return user
+}
+
+export const getItemWithExpiry = (key:string) => {
+  const itemString = localStorage.getItem(key);
+  if (!itemString) {
+    return null;
+  }
+  const item = JSON.parse(itemString);
+  const now = new Date().getTime();
+  if (now > item.expiry) {
+    localStorage.removeItem(key);
+    return null;
+  }
+  return item.value;
 }
