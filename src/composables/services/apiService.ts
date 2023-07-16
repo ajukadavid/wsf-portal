@@ -21,6 +21,17 @@ export const createProvince = async (provinceCode: string, provinceName: string,
   }
 };
 
+
+export const getProvinces =  async() => {
+  try {
+      const res = await axios.get(`${BASE_URL}/api/Province/GetAllProvince`)
+      return res.data
+  } catch (error) {
+        return error
+  }
+}
+
+
 export const createArea = async (provinceCode: string, areaCode: string ,areaName: string, areaAddress: string) => {
   const token = getItemWithExpiry('token');
   const config = {

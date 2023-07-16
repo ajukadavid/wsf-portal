@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createProvince } from '../composables/services/createService'
+import { createProvince } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
 
 const loading = ref(false)
@@ -69,4 +69,4 @@ const handleCreateProvince = async () => {
             </span>
         </div>
     </div>
-</template>
+</template>../composables/services/apiService

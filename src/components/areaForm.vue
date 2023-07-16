@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { createArea } from '../composables/services/createService'
+import { ref, onMounted } from 'vue';
+import { createArea, getProvinces } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
 const loading = ref(false)
 const areaCode = ref('')
@@ -9,6 +9,19 @@ const areaName = ref('')
 const areaAddress = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
+
+const getProvince = async () => {
+    try {
+        let res = await getProvinces()
+        console.log(res)
+    } catch {
+
+    }
+}
+
+onMounted(() => {
+    getProvince()
+})
 
 const handleCreateArea = async () => {
 
@@ -75,4 +88,4 @@ const handleCreateArea = async () => {
             </span>
         </div>
     </div>
-</template>
+</template>../composables/services/apiService
