@@ -3,7 +3,6 @@ import axios from "axios"
 import { getItemWithExpiry } from "../auth/useAuth";
 
 const token = getItemWithExpiry('token');
-
 const config = {
   headers: { Authorization: `Bearer ${token}` }
 };
@@ -34,17 +33,28 @@ export const getProvinces =  async() => {
 
 
 export const createArea = async (provinceCode: string, areaCode: string ,areaName: string, areaAddress: string) => {
-  const token = getItemWithExpiry('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-
   try {
     const response = await axios.post(`${BASE_URL}/Area/CreateArea`, {
       provinceCode,
       areaCode,
       areaName,
       areaAddress,
+    }, config);
+    return response.data; 
+  } catch (error) {
+    return error
+  }
+};
+
+
+export const createZone = async (provinceCode: string, areaCode: string ,zoneCode: string, zoneName: string, zoneAddress:string) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/Area/CreateArea`, {
+      provinceCode,
+      areaCode,
+      zoneCode,
+      zoneName,
+      zoneAddress,
     }, config);
     return response.data; 
   } catch (error) {

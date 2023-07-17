@@ -3,6 +3,7 @@ import { onMounted, computed, ref } from 'vue'
 import { useRouter } from "vue-router";
 import createModal from './createModal.vue'
 import provinceForm from './provinceForm.vue'
+import zoneForm from './zoneForm.vue'
 import areaForm from './areaForm.vue';
 import { useAppStore } from '../stores/appStore'
 
@@ -63,7 +64,7 @@ onMounted(() => {
             Add Area
           </span>
         </div>
-        <div
+        <div @click="handleOpenModal('Zone')"
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons text-4xl">
             add_circle
@@ -72,7 +73,7 @@ onMounted(() => {
             Add Zone
           </span>
         </div>
-        <div
+        <div @click="handleOpenModal('Cell')"
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons text-4xl">
             add_circle
@@ -91,7 +92,7 @@ onMounted(() => {
     </template>
     <provinceForm v-if="modalAction === 'Province'" />
     <areaForm v-if="modalAction === 'Area'" />
-
+    <zoneForm v-if="modalAction === 'Zone'" />
   </createModal>
 </template>
 

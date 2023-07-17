@@ -57,7 +57,7 @@ const handleCreateProvince = async () => {
             <div class="text-red-500">
                 <span>{{ ErrMsg }}</span>
             </div>
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center my-4">
                 <createSpinner v-if="loading" class="mt-8" />
                 <button v-else @click="handleCreateProvince"
                     class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
