@@ -9,18 +9,20 @@ const provinceName = ref('')
 const provinceAddress = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
+const successMsg = ref('')
 
 const handleCreateProvince = async () => {
     loading.value = true
     try {
         const response = await createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
-        if (response.status !== 200) {
-            ErrMsg.value = response.response.data.responseDescription
-        } else {
+        if (response.status = "Ok") {
             showSuccess.value = true
+        } else {
+            ErrMsg.value = response.response.data.responseDescription
+
         }
-    } catch {
-        //
+    } catch (e) {
+        console.log(e)
     }
     loading.value = false
 }
@@ -63,10 +65,13 @@ const handleCreateProvince = async () => {
             </div>
 
         </form>
-        <div v-else class="flex items-center justify-center w-full">
-            <span class="material-icons text-green-600 text-8xl">
+        <div v-else class="flex flex-col text-green-600 items-center justify-center my-20 w-full">
+            <span class="material-icons  text-8xl">
                 check_circle
+            </span>
+            <span class="font-bold text-3xl mt-8">
+                {{ successMsg }}
             </span>
         </div>
     </div>
-</template>../composables/services/apiService
+</template>
