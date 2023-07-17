@@ -31,6 +31,8 @@ export const getProvinces =  async() => {
   }
 }
 
+//AREAS
+
 
 export const createArea = async (provinceCode: string, areaCode: string ,areaName: string, areaAddress: string) => {
   try {
@@ -46,6 +48,19 @@ export const createArea = async (provinceCode: string, areaCode: string ,areaNam
   }
 };
 
+
+
+export const getAreas =  async() => {
+  try {
+      const res = await axios.get(`${BASE_URL}/Area/GetAllArea`, config)
+      return res.data
+  } catch (error) {
+        return error
+  }
+}
+
+
+//ZONES
 
 export const createZone = async (provinceCode: string, areaCode: string ,zoneCode: string, zoneName: string, zoneAddress:string) => {
   try {
