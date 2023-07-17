@@ -16,7 +16,9 @@ const handleLogOut = () => {
     <div>
         <div class="flex justify-between px-5">
             <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 p-3" />
-            <p class="mt-8 text-4xl mr-20">Living Faith Church WSF Platform</p>
+            <div>
+                <p class="mt-8 text-sm mr-20 w-full">Living Faith Church WSF Platform</p>
+            </div>
             <span @click="showDrop = !showDrop"
                 class="cursor-pointer material-icons my-auto text-gray-700 text-5xl fw-900 ">
                 account_circle
