@@ -11,10 +11,7 @@ const areaAddress = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
 const areas = ref<any>([])
-
-const handleUpdateProvince = (val: string) => {
-    console.log(val)
-}
+const successMsg = ref('')
 
 const getProvince = async () => {
     try {
@@ -34,10 +31,12 @@ const handleCreateArea = async () => {
     loading.value = true
     try {
         const response = await createArea(provinceCode.value, areaCode.value, areaName.value, areaAddress.value)
-        if (response.status !== 200) {
-            ErrMsg.value = response.response.data.responseDescription
-        } else {
+        if (response.status = "Ok") {
             showSuccess.value = true
+            successMsg.value = response.responseDescription
+        } else {
+            ErrMsg.value = response.response.data.responseDescription
+
         }
     } catch {
         //
@@ -87,10 +86,13 @@ const handleCreateArea = async () => {
                     Area</button>
             </div>
         </form>
-        <!-- <div v-else class="flex items-center justify-center w-full h-[400px]">
-            <span class="material-icons text-green-600 text-[150px]">
+        <div v-else class="flex flex-col text-green-600 items-center justify-center my-20 w-full">
+            <span class="material-icons  text-8xl">
                 check_circle
             </span>
-        </div> -->
+            <span class="font-bold text-3xl mt-8">
+                {{ successMsg }}
+            </span>
+        </div>
     </div>
 </template>../composables/services/apiService

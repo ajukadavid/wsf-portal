@@ -17,6 +17,7 @@ const handleCreateProvince = async () => {
         const response = await createProvince(provinceCode.value, provinceName.value, provinceAddress.value)
         if (response.status = "Ok") {
             showSuccess.value = true
+            successMsg.value = response.responseDescription
         } else {
             ErrMsg.value = response.response.data.responseDescription
 
