@@ -12,8 +12,7 @@ const ErrMsg = ref('')
 const showSuccess = ref(false)
 const areas = ref<any>([])
 
-const handleUpdateProvince = (val: any) => {
-    console.log('rrrr')
+const handleUpdateProvince = (val: string) => {
     console.log(val)
 }
 
@@ -53,28 +52,29 @@ const handleCreateArea = async () => {
         <form v-if="!showSuccess" @click.prevent="" class="flex flex-col gap-5 w-full mt-10 items-center justify-center">
             <div class="w-full">
                 <label for="provinceCode">
-                    <WsfDropdown title="Province Code: " :items="areas" @update:value="handleUpdateProvince" />
+                    <WsfDropdown title="Province Code: " :items="areas"
+                        @update:value="((code: string) => provinceCode = code)" />
                 </label>
             </div>
             <div class="w-full">
                 <label for="areaCode">
                     Area Code:
-                    <input v-model="areaCode" type="text" id="areaCode" class="p-4 w-full shadow-md rounded border-0"
-                        placeholder="Area Code" />
+                    <input v-model="areaCode" type="text" id="areaCode"
+                        class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Area Code" />
                 </label>
             </div>
             <div class="w-full">
                 <label for="areaName">
                     Area Name:
-                    <input v-model="areaName" type="text" id="areaName" class="p-4 w-full shadow-md rounded border-0"
-                        placeholder="Area Name" />
+                    <input v-model="areaName" type="text" id="areaName"
+                        class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Area Name" />
                 </label>
             </div>
             <div class="w-full">
                 <label for="areaAddress">
                     Area Address:
-                    <input v-model="areaAddress" type="text" id="areaAddress" class="p-4 w-full shadow-md rounded border-0"
-                        placeholder="Area Address" />
+                    <input v-model="areaAddress" type="text" id="areaAddress"
+                        class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Area Address" />
                 </label>
             </div>
             <div class="text-red-500">
