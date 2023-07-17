@@ -23,7 +23,7 @@ const handleCreateProvince = async () => {
 
         }
     } catch (e) {
-        console.log(e)
+        // console.log(e)
     }
     loading.value = false
 }

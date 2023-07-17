@@ -14,7 +14,6 @@ const emit = defineEmits(['update:value'])
 const handleSelectItem = (e: Event) => {
     const selectedOptionValue = (e.target as HTMLSelectElement).value;
     emit('update:value', selectedOptionValue)
-    console.log(selectedOptionValue)
 }
 </script>
 

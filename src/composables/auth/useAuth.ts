@@ -22,7 +22,7 @@ export const handleLogin = async (userName:string, password:string, user:any) =>
         user.firstName = response.data.firstName
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       })
 
       return user
