@@ -10,12 +10,17 @@ const areaName = ref('')
 const areaAddress = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
-const areas = ref<any>(['one', 'two', 'three'])
+const areas = ref<any>([])
+
+const handleUpdateProvince = (val: any) => {
+    console.log('rrrr')
+    console.log(val)
+}
 
 const getProvince = async () => {
     try {
         let res = await getProvinces()
-        console.log(res)
+        areas.value = res.data.items
     } catch {
 
     }
@@ -48,7 +53,7 @@ const handleCreateArea = async () => {
         <form v-if="!showSuccess" @click.prevent="" class="flex flex-col gap-5 w-full mt-10 items-center justify-center">
             <div class="w-full">
                 <label for="provinceCode">
-                    <WsfDropdown title="Province Code: " :items="areas" />
+                    <WsfDropdown title="Province Code: " :items="areas" @update:value="handleUpdateProvince" />
                 </label>
             </div>
             <div class="w-full">
@@ -82,10 +87,10 @@ const handleCreateArea = async () => {
                     Area</button>
             </div>
         </form>
-        <div v-else class="flex items-center justify-center w-full h-[400px]">
+        <!-- <div v-else class="flex items-center justify-center w-full h-[400px]">
             <span class="material-icons text-green-600 text-[150px]">
                 check_circle
             </span>
-        </div>
+        </div> -->
     </div>
 </template>../composables/services/apiService

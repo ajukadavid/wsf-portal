@@ -2,12 +2,13 @@ const BASE_URL ="http://102.67.32.92:8089/api"
 import axios from "axios"
 import { getItemWithExpiry } from "../auth/useAuth";
 
+const token = getItemWithExpiry('token');
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` }
+};
 
 export const createProvince = async (provinceCode: string, provinceName: string, provinceAddress: string) => {
-  const token = getItemWithExpiry('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
 
   try {
     const response = await axios.post(`${BASE_URL}/Province/CreateProvince`, {
@@ -24,7 +25,7 @@ export const createProvince = async (provinceCode: string, provinceName: string,
 
 export const getProvinces =  async() => {
   try {
-      const res = await axios.get(`${BASE_URL}/api/Province/GetAllProvince`)
+      const res = await axios.get(`${BASE_URL}/Province/GetAllProvince`, config)
       return res.data
   } catch (error) {
         return error
