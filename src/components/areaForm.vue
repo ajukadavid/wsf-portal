@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { createArea, getProvinces } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
+import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
 const areaCode = ref('')
 const provinceCode = ref('')
@@ -9,6 +10,7 @@ const areaName = ref('')
 const areaAddress = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
+const areas = ref<any>(['one', 'two', 'three'])
 
 const getProvince = async () => {
     try {
@@ -46,9 +48,7 @@ const handleCreateArea = async () => {
         <form v-if="!showSuccess" @click.prevent="" class="flex flex-col gap-5 w-full mt-10 items-center justify-center">
             <div class="w-full">
                 <label for="provinceCode">
-                    Province Code:
-                    <input v-model="provinceCode" type="text" id="provinceCode"
-                        class="p-4 w-full shadow-md rounded border-0" placeholder="Province Code" />
+                    <WsfDropdown title="Province Code: " :items="areas" />
                 </label>
             </div>
             <div class="w-full">
