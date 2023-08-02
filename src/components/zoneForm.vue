@@ -24,8 +24,19 @@ const getProvince = async () => {
     }
 }
 
+
+const getArea = async () => {
+    try {
+        let res = await getAreas()
+        areas.value = res.data.items
+    } catch {
+
+    }
+}
+
 onMounted(() => {
     getProvince()
+    getArea()
 })
 
 const handleCreateZone = async () => {
