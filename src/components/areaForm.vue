@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { createArea, getProvinces } from '../composables/services/apiService'
+import { createArea, getAllProvinces } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
@@ -15,8 +15,8 @@ const successMsg = ref('')
 
 const getProvince = async () => {
     try {
-        let res = await getProvinces()
-        areas.value = res.data.items
+        let res = await getAllProvinces()
+        areas.value = res.data
     } catch {
 
     }

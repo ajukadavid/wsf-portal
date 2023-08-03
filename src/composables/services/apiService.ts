@@ -31,6 +31,15 @@ export const getProvinces =  async() => {
   }
 }
 
+export const getAllProvinces = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/System/GellAllProvince`, config)
+    return res.data
+} catch (error) {
+      return error
+}
+}
+
 //AREAS
 
 
