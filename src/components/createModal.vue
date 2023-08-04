@@ -11,7 +11,7 @@ const emit = defineEmits(['update:close', 'update:handleCreate'])
                     close
                 </span>
             </div>
-            <div class="flex items-center justify-start  w-full px-10">
+            <div class="flex items-center h-[500px] overflow-auto justify-start  w-full p   -10">
                 <slot></slot>
             </div>
         </div>

@@ -79,9 +79,9 @@ const handleCreateZone = async () => {
 </script>
 
 <template>
-    <div class="w-full pb-8">
+    <div class="w-full">
         <div v-if="!showSuccess">
-            <form @click.prevent="" class="flex flex-col gap-5 w-full mt-10 items-center justify-center">
+            <form @click.prevent="" class="flex flex-col gap-5 w-full pt-24  mt-10 items-center justify-center">
                 <div class="w-full">
                     <label for="provinceCode">
                         <WsfDropdown title="Province Code: " :items="provinces" @update:value="handleSetProvince" />
@@ -94,9 +94,15 @@ const handleCreateZone = async () => {
                 </div>
                 <div class="w-full">
                     <label for="zoneCode">
-                        Zone Code:
-                        <input v-model="zoneCode" type="text" id="zoneCode"
-                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Zone Code" />
+                        <WsfDropdown title="Zone Code: " :items="zones"
+                            @update:value="((code: string) => zoneCode = code)" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="cellCode">
+                        Cell Code:
+                        <input v-model="cellCode" type="text" id="cellCode"
+                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Code" />
                     </label>
                 </div>
                 <div class="w-full">
@@ -106,6 +112,7 @@ const handleCreateZone = async () => {
                             class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Name" />
                     </label>
                 </div>
+
                 <div class="w-full">
                     <label for="zoneAddress">
                         Cell Address:

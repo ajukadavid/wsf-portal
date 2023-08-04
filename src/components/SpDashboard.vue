@@ -6,6 +6,7 @@ import provinceForm from './provinceForm.vue'
 import zoneForm from './zoneForm.vue'
 import areaForm from './areaForm.vue';
 import { useAppStore } from '../stores/appStore'
+import CellForm from './cellForm.vue';
 
 
 const $router = useRouter()
@@ -24,7 +25,6 @@ const handleOpenModal = (action: string) => {
 }
 
 const handleClose = () => {
-  console.log('b')
   showModal.value = false
 }
 
@@ -94,6 +94,7 @@ onMounted(() => {
     <provinceForm v-if="modalAction === 'Province'" />
     <areaForm v-if="modalAction === 'Area'" />
     <zoneForm v-if="modalAction === 'Zone'" />
+    <CellForm v-if="modalAction === 'Cell'" />
   </createModal>
 </template>
 

@@ -48,7 +48,8 @@ const handleCreateArea = async () => {
 
 <template>
     <div class="w-full">
-        <form v-if="!showSuccess" @click.prevent="" class="flex flex-col gap-5 w-full mt-10 items-center justify-center">
+        <form v-if="!showSuccess" @click.prevent=""
+            class="flex flex-col pt-24  gap-5 w-full mt-10 items-center justify-center">
             <div class="w-full">
                 <label for="provinceCode">
                     <WsfDropdown title="Province Code: " :items="areas"
