@@ -99,7 +99,7 @@ export const createZone = async (provinceCode: string, areaCode: string ,zoneCod
 
 export const getAllZones = async (areaCode: string) => {
   try {
-    const res = await axios.get(`${BASE_URL}/System/GellAllZone/${areaCode}`, config)
+    const res = await axios.get(`${BASE_URL}/System/GetAllZone/${areaCode}`, config)
     return res.data
 } catch (error) {
       return error

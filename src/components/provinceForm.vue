@@ -33,7 +33,7 @@ const handleCreateProvince = async () => {
 <template>
     <div class="w-full">
         <form v-if="!showSuccess" @click.prevent=""
-            class="flex pt-24  flex-col gap-5 w-full mt-10 items-center justify-center">
+            class="flex flex-col  px-8 gap-5 w-full pt-24  mt-10 items-center justify-center">
             <div class="w-full">
                 <label for="provinceCode">
                     Province Code:

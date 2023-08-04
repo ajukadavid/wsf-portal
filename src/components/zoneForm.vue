@@ -66,10 +66,9 @@ const handleCreateZone = async () => {
 <template>
     <div class="w-full">
         <div v-if="!showSuccess">
-            <form @click.prevent="" class="flex flex-col gap-5 w-full pt-24 mt-10 items-center justify-center">
+            <form @click.prevent="" class="flex px-8 flex-col gap-5 w-full pt-24 mt-10 items-center justify-center">
                 <div class="w-full">
                     <label for="provinceCode">
-
                         <WsfDropdown title="Province Code: " :items="provinces" @update:value="handleSetProvince" />
                     </label>
                 </div>
