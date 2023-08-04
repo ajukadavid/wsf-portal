@@ -9,7 +9,7 @@ export const routes = [
         component: SpDashboard
     },
     {
-        path: '/minister:id?', 
+        path: '/ministerDashboard', 
         name: 'MinisterDashboard',
         component: MinisterDashboard
     },
