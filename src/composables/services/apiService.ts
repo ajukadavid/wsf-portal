@@ -83,7 +83,7 @@ export const getAllAreas =  async(provinceCode:string) => {
 
 export const createZone = async (provinceCode: string, areaCode: string ,zoneCode: string, zoneName: string, zoneAddress:string) => {
   try {
-    const response = await axios.post(`${BASE_URL}/Area/CreateArea`, {
+    const response = await axios.post(`${BASE_URL}/Zone/CreateZone`, {
       provinceCode,
       areaCode,
       zoneCode,

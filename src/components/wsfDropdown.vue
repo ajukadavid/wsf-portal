@@ -23,8 +23,8 @@ const handleSelectItem = (e: Event) => {
     <div class="flex flex-col">
         <label :for="title">{{ title }}</label>
         <div class="mt-3">
-            <select name="pets" :disabled="items.length === 0" class="w-full bg-white shadow p-3 pr-2 outline-red-500 "
-                :id="title" @change="handleSelectItem">
+            <select name="pets" class="w-full bg-white shadow p-3 pr-2 outline-red-500 " :id="title"
+                @change="handleSelectItem">
                 <option value="default">Select {{ title }}</option>
                 <option v-for="item in items" :value="item.code">{{ item.code }}</option>
             </select>

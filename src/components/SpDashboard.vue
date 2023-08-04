@@ -24,6 +24,7 @@ const handleOpenModal = (action: string) => {
 }
 
 const handleClose = () => {
+  console.log('b')
   showModal.value = false
 }
 
