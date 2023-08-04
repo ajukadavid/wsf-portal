@@ -95,3 +95,31 @@ export const createZone = async (provinceCode: string, areaCode: string ,zoneCod
     return error
   }
 };
+
+
+export const getAllZones = async (areaCode: string) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/System/GellAllZone/${areaCode}`, config)
+    return res.data
+} catch (error) {
+      return error
+}
+}
+
+//CELLS
+
+export const createCell = async (provinceCode: string, areaCode: string ,zoneCode: string, cellCode:string, cellName: string, cellAddress:string) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/Cell/CreateCell`, {
+      provinceCode,
+      areaCode,
+      zoneCode,
+      cellCode,
+      cellName,
+      cellAddress,
+    }, config);
+    return response.data; 
+  } catch (error) {
+    return error
+  }
+};
