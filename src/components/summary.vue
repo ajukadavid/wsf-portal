@@ -9,20 +9,26 @@ const branches = ref<null>()
 onMounted(() => {
     let b = getReports().then((r) => {
         branches.value = r.data.items
-        console.log(branches.value)
     })
-
 })
 
 </script>
 
 <template>
-    <div class="card">
-        <DataTable :value="branches" tableStyle="min-width: 50rem">
-            <Column field="provinceCode" header="provinceCode"></Column>
-            <Column field="areaCode" header="areaCode"></Column>
-            <Column field="category" header="Category"></Column>
-            <Column field="quantity" header="Quantity"></Column>
-        </DataTable>
+    <div class="p-4">
+        <div>
+            <DataTable :value="branches" tableStyle="min-width: 50rem">
+                <Column field="provinceCode" header="Province Code"></Column>
+                <Column field="areaCode" header="Area Code"></Column>
+                <Column field="zoneCode" header="Zone Code"></Column>
+                <Column field="cellCode" header="Cell Code"></Column>
+                <Column field="male" header="Male"></Column>
+                <Column field="female" header="Female"></Column>
+                <Column field="children" header="Children"></Column>
+                <Column field="newComers" header="New Comers"></Column>
+                <Column field="testimonies" header="Testimonies"></Column>
+                <Column field="total" header="Total"></Column>
+            </DataTable>
+        </div>
     </div>
 </template>

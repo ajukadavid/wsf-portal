@@ -125,18 +125,6 @@ export const createCell = async (provinceCode: string, areaCode: string ,zoneCod
 };
 
 
-//Reports
-
-// export const getReports = async (ProvinceCode?: string, AreaCode?: string, ZoneCode?: string, CellCode?: string, from?: string, to?: string, PageNumber?: string, PageSize?: string ) => {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/Reports/GetReports`, {params: {ProvinceCode, AreaCode, ZoneCode, CellCode, from, to, PageNumber, PageSize}},);
-//     return response.data
-//   } catch(err) {
-//     return err
-//   }
-// }
-// const BASE_URL = 'https://api.example.com'; // Replace with your base API URL
-
 export async function getReports(
   ProvinceCode?: string,
   AreaCode?: string,
@@ -182,7 +170,4 @@ export async function getReports(
     return err;
   }
 }
-
-// Usage example:
-// const authToken = 'YOUR_AUTHORIZATION_TOKEN'; // Replace with your actual authorization token
 
