@@ -124,6 +124,16 @@ export const createCell = async (provinceCode: string, areaCode: string ,zoneCod
   }
 };
 
+
+export const getAllCells = async (zoneCode: string) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/System/GetAllCell/${zoneCode}`, config)
+    return res.data
+} catch (error) {
+      return error
+}
+}
+
 //REPORTS
 
 export async function getReports(

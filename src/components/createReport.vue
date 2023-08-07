@@ -21,6 +21,7 @@ const showSuccess = ref(false)
 const provinces = ref<any>([])
 const areas = ref<any>([])
 const zones = ref<any>([])
+const cells = ref<any>([])
 
 const successMsg = ref('')
 
@@ -85,9 +86,10 @@ const handleCreateZone = async () => {
 </script>
 
 <template>
-    <div class="w-full">
+    <div class="w-full ">
         <div v-if="!showSuccess">
-            <form @click.prevent="" class="flex flex-col  px-8 gap-5 w-full pt-40  mt-10 items-center justify-center">
+            <form @click.prevent=""
+                class="flex flex-col overflow-auto h-[500px] pt-24 px-8 gap-5 w-full mt-6 items-center justify-center">
                 <div class="w-full">
                     <label for="provinceCode">
                         <WsfDropdown title="Province Code: " :items="provinces" @update:value="handleSetProvince" />
@@ -105,6 +107,10 @@ const handleCreateZone = async () => {
                     </label>
                 </div>
                 <div class="w-full">
+                    <label for="cellCode">
+                        <WsfDropdown title="Cell Code: " :items="cells"
+                            @update:value="((code: string) => cellCode = code)" />
+                    </label>
                     <label for="cellCode">
                         Cell Code:
                         <input v-model="cellCode" type="text" id="cellCode"
@@ -135,7 +141,7 @@ const handleCreateZone = async () => {
                 <createSpinner v-if="loading" class="mt-4" />
                 <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create
-                    Cell</button>
+                    Report</button>
             </div>
         </div>
 
