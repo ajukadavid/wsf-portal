@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { createCell, getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport, } from '../composables/services/apiService'
+import { createCell, getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
@@ -25,7 +25,7 @@ const cells = ref<any>([])
 const successMsg = ref('')
 const total = computed(() => {
     let b = male.value! + female.value!
-    return b + children.value
+    return (b + children.value + newComers.value).toString()
 })
 const getProvince = async () => {
     try {
@@ -82,10 +82,10 @@ onMounted(() => {
     getProvince()
 })
 
-const handleCreateZone = async () => {
+const handleCreateReport = async () => {
     loading.value = true
     try {
-        const response = await createCell(provinceCode.value, areaCode.value, zoneCode.value, cellCode.value, cellName.value, cellAddress.value)
+        const response = await createReport(provinceCode.value, areaCode.value, zoneCode.value, cellCode.value, male.value.toString(), female.value.toString(), children.value.toString(), newComers.value.toString(), testimonies.value, total.value)
         if (response.status = "Ok") {
             showSuccess.value = true
             successMsg.value = response.responseDescription
@@ -105,7 +105,7 @@ const handleCreateZone = async () => {
     <div class="w-full ">
         <div v-if="!showSuccess">
             <form @click.prevent=""
-                class="flex flex-col overflow-auto h-[500px] pt-24 px-8 gap-5 w-full mt-6 items-center justify-center">
+                class="flex flex-col overflow-auto h-[600px] pt-96 px-8 gap-5 w-full mt-6 items-center justify-center">
                 <div class="w-full">
                     <label for="provinceCode">
                         <WsfDropdown title="Province Code: " :items="provinces" @update:value="handleSetProvince" />
@@ -153,7 +153,7 @@ const handleCreateZone = async () => {
                 <div class="w-full">
                     <label for="newComers">
                         New Comers:
-                        <input v-model="newComers" type="text" id="newComers"
+                        <input v-model="newComers" type="number" id="newComers"
                             class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="New Comers" />
                     </label>
                 </div>
@@ -178,12 +178,12 @@ const handleCreateZone = async () => {
             </form>
             <div class="flex items-center justify-center mb-3">
                 <createSpinner v-if="loading" class="mt-4" />
-                <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
+                <button v-else @click="handleCreateReport"
+                    class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Send
                     Report</button>
             </div>
         </div>
-
 
         <div v-else class="flex flex-col text-green-600 items-center justify-center my-20 w-full">
             <span class="material-icons  text-8xl">
