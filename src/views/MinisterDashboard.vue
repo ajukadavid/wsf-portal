@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { onMounted } from 'vue';
+import { getReports } from '../composables/services/apiService'
 
 
 
+
+onMounted(() => {
+    getReports()
+})
 </script>
     
 <template></template>

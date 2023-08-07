@@ -123,3 +123,66 @@ export const createCell = async (provinceCode: string, areaCode: string ,zoneCod
     return error
   }
 };
+
+
+//Reports
+
+// export const getReports = async (ProvinceCode?: string, AreaCode?: string, ZoneCode?: string, CellCode?: string, from?: string, to?: string, PageNumber?: string, PageSize?: string ) => {
+//   try {
+//     const response = await axios.get(`${BASE_URL}/Reports/GetReports`, {params: {ProvinceCode, AreaCode, ZoneCode, CellCode, from, to, PageNumber, PageSize}},);
+//     return response.data
+//   } catch(err) {
+//     return err
+//   }
+// }
+// const BASE_URL = 'https://api.example.com'; // Replace with your base API URL
+
+export async function getReports(
+  ProvinceCode?: string,
+  AreaCode?: string,
+  ZoneCode?: string,
+  CellCode?: string,
+  from?: string,
+  to?: string,
+  PageNumber?: string,
+  PageSize?: string,
+): Promise<any> {
+  const apiUrl = `${BASE_URL}/Reports/GetReports`;
+  const queryParams: any = {
+    ProvinceCode,
+    AreaCode,
+    ZoneCode,
+    CellCode,
+    from,
+    to,
+    PageNumber,
+    PageSize,
+  };
+
+  const url = new URL(apiUrl);
+  Object.keys(queryParams).forEach(key => queryParams[key] && url.searchParams.append(key, queryParams[key]));
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        // Add other headers if required by your API
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return response.json();
+  } catch (err) {
+    console.error('Error:', err);
+    return err;
+  }
+}
+
+// Usage example:
+// const authToken = 'YOUR_AUTHORIZATION_TOKEN'; // Replace with your actual authorization token
+
