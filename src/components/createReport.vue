@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { createCell, getAllProvinces, getAllAreas, getAllZones, createReport } from '../composables/services/apiService'
+import { ref, onMounted, computed } from 'vue';
+import { createCell, getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport, } from '../composables/services/apiService'
 import createSpinner from './createSpinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
@@ -9,12 +9,11 @@ const provinceCode = ref('')
 const cellName = ref('')
 const cellAddress = ref('')
 const cellCode = ref('')
-const male = ref('')
-const female = ref('')
-const children = ref('')
+const male = ref<number>(0)
+const female = ref<number>(0)
+const children = ref<number>(0)
 const newComers = ref('')
 const testimonies = ref('')
-const total = ref('')
 const zoneCode = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
@@ -24,7 +23,10 @@ const zones = ref<any>([])
 const cells = ref<any>([])
 
 const successMsg = ref('')
-
+const total = computed(() => {
+    let b = male.value! + female.value!
+    return b + children.value
+})
 const getProvince = async () => {
     try {
         let res = await getAllProvinces()
@@ -54,6 +56,20 @@ const handleSetArea = async (code: string) => {
         if (!!areaCode) {
             let res = await getAllZones(areaCode.value)
             zones.value = res.data
+        }
+
+    } catch {
+
+    }
+}
+
+
+const handleSetCell = async (code: string) => {
+    zoneCode.value = code
+    try {
+        if (!!areaCode) {
+            let res = await getAllCells(zoneCode.value)
+            cells.value = res.data
         }
 
     } catch {
@@ -102,8 +118,7 @@ const handleCreateZone = async () => {
                 </div>
                 <div class="w-full">
                     <label for="zoneCode">
-                        <WsfDropdown title="Zone Code: " :items="zones"
-                            @update:value="((code: string) => zoneCode = code)" />
+                        <WsfDropdown title="Zone Code: " :items="zones" @update:value="handleSetCell" />
                     </label>
                 </div>
                 <div class="w-full">
@@ -111,25 +126,49 @@ const handleCreateZone = async () => {
                         <WsfDropdown title="Cell Code: " :items="cells"
                             @update:value="((code: string) => cellCode = code)" />
                     </label>
-                    <label for="cellCode">
-                        Cell Code:
-                        <input v-model="cellCode" type="text" id="cellCode"
-                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Code" />
-                    </label>
+
                 </div>
                 <div class="w-full">
-                    <label for="cellName">
-                        Cell Name:
-                        <input v-model="cellName" type="text" id="cellName"
-                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Name" />
+                    <label for="male">
+                        No of Male:
+                        <input v-model="male" type="number" id="male"
+                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Male" />
                     </label>
                 </div>
 
                 <div class="w-full">
-                    <label for="zoneAddress">
-                        Cell Address:
-                        <input v-model="cellAddress" type="text" id="cellAddress"
-                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Cell Address" />
+                    <label for="female">
+                        No of Female:
+                        <input v-model="female" type="number" id="female"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Female" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="children">
+                        No of Children:
+                        <input v-model="children" type="number" id="children"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Children" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="newComers">
+                        New Comers:
+                        <input v-model="newComers" type="text" id="newComers"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="New Comers" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="testimonies">
+                        Testimonies:
+                        <input v-model="testimonies" type="text" id="testimonies"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Testimonies" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="testimonies">
+                        Total:
+                        <input v-model="total" type="text" id="total"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="total" />
                     </label>
                 </div>
                 <div class="text-red-500">
@@ -140,7 +179,7 @@ const handleCreateZone = async () => {
             <div class="flex items-center justify-center mb-3">
                 <createSpinner v-if="loading" class="mt-4" />
                 <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
-                    Create
+                    Send
                     Report</button>
             </div>
         </div>
