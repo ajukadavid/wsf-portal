@@ -29,6 +29,7 @@ const handleClose = () => {
 }
 
 onMounted(() => {
+
   let token = localStorage.getItem('token')
   if (!!token) {
     //todo: api call to get user details

@@ -1,5 +1,5 @@
 import SpDashboard from '../components/SpDashboard.vue'
-import MinisterDashboard from '../views/MinisterDashboard.vue'
+import summary from '../components/summary.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../components/Login.vue'
 export const routes = [
@@ -9,9 +9,9 @@ export const routes = [
         component: SpDashboard
     },
     {
-        path: '/ministerDashboard', 
-        name: 'MinisterDashboard',
-        component: MinisterDashboard
+        path: '/summary', 
+        name: 'summary',
+        component: summary
     },
     {
         path: '/sign-up', 
