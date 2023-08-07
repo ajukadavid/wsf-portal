@@ -124,6 +124,7 @@ export const createCell = async (provinceCode: string, areaCode: string ,zoneCod
   }
 };
 
+//REPORTS
 
 export async function getReports(
   ProvinceCode?: string,
@@ -171,3 +172,32 @@ export async function getReports(
   }
 }
 
+
+export const createReport = async (
+  provinceCode: string, 
+  areaCode: string, 
+  zoneCode: string,
+  male:string, 
+  female: string,
+  children:string,
+  newComers:string,
+  testimonies:string,
+  total: string,
+  ) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/CellReport/cellReport`, {
+      provinceCode,
+      areaCode,
+      zoneCode,
+      male, 
+      female,
+      children,
+      newComers,
+      testimonies,
+      total,
+    }, config);
+    return response.data; 
+  } catch (error) {
+    return error
+  }
+};
