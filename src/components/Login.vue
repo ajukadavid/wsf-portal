@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import { handleLogin } from '../composables/auth/useAuth'
 import { useAppStore } from '../stores/appStore'
-import createSpinner from './createSpinner.vue';
+import spinner from './spinner.vue';
 
 const email = ref('diamondtivere@yahoo.com')
 const password = ref('honest')
@@ -23,7 +23,7 @@ const userLogin = async () => {
   store.user.lastName = data.fullName
   store.user.id = data.id
   loading.value = false
-  $router.push('/')
+  $router.push('/summary')
 }
 
 </script>
@@ -42,7 +42,7 @@ const userLogin = async () => {
 
       </div>
       <div class="flex items-center justify-center">
-        <createSpinner v-if="loading" class="mt-8" />
+        <spinner v-if="loading" class="mt-8" />
         <button v-else @click="userLogin" type="submit"
           class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">
           Submit

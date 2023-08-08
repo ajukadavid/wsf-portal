@@ -1,5 +1,5 @@
 import SpDashboard from '../components/SpDashboard.vue'
-import summary from '../components/summary.vue'
+import reports from '../components/reports.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../components/Login.vue'
 import createReport from '../components/createReport.vue'
@@ -11,9 +11,9 @@ export const routes = [
         component: SpDashboard
     },
     {
-        path: '/summary', 
-        name: 'summary',
-        component: summary
+        path: '/reports', 
+        name: 'reports',
+        component: reports
     },
     {
         path: '/create-report', 

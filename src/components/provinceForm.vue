@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { createProvince } from '../composables/services/apiService'
-import createSpinner from './createSpinner.vue';
+import spinner from './spinner.vue';
 
 const loading = ref(false)
 const provinceCode = ref('')
@@ -59,7 +59,7 @@ const handleCreateProvince = async () => {
                 <span>{{ ErrMsg }}</span>
             </div>
             <div class="flex items-center justify-center my-4">
-                <createSpinner v-if="loading" class="mt-8" />
+                <spinner v-if="loading" class="mt-8" />
                 <button v-else @click="handleCreateProvince"
                     class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create

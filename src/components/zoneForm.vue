@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { createZone, getAllProvinces, getAllAreas } from '../composables/services/apiService'
-import createSpinner from './createSpinner.vue';
+import spinner from './spinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
 const areaCode = ref('')
@@ -105,7 +105,7 @@ const handleCreateZone = async () => {
 
             </form>
             <div class="flex items-center justify-center mb-3">
-                <createSpinner v-if="loading" class="mt-4" />
+                <spinner v-if="loading" class="mt-4" />
                 <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create
                     Zone</button>

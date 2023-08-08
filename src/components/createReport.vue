@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { createCell, getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport } from '../composables/services/apiService'
-import createSpinner from './createSpinner.vue';
+import spinner from './spinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
 const areaCode = ref('')
@@ -177,7 +177,7 @@ const handleCreateReport = async () => {
 
             </form>
             <div class="flex items-center justify-center mb-3">
-                <createSpinner v-if="loading" class="mt-4" />
+                <spinner v-if="loading" class="mt-4" />
                 <button v-else @click="handleCreateReport"
                     class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Send
