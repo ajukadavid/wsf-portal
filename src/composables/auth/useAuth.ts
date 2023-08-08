@@ -17,6 +17,8 @@ export const handleLogin = async (userName:string, password:string, user:any) =>
       })
       .then(function (response) {
         setItemWithExpiry("token", response.data.token, 5760)
+        setItemWithExpiry("userName", response.data.fullName, 5760)
+
         user.fullName = response.data.fullName
         user.id = response.data.userId
         user.firstName = response.data.firstName

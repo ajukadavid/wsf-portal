@@ -6,7 +6,7 @@ import createReport from '../components/createReport.vue'
 
 export const routes = [
     {
-        path: '/', 
+        path: '/create-branches', 
         name: 'SpDashboard', 
         component: SpDashboard
     },

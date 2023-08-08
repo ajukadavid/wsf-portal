@@ -23,7 +23,7 @@ const userLogin = async () => {
   store.user.lastName = data.fullName
   store.user.id = data.id
   loading.value = false
-  $router.push('/summary')
+  $router.push('/reports')
 }
 
 </script>

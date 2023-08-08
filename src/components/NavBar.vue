@@ -29,7 +29,8 @@ const handleLogOut = () => {
             class="absolute z-20 cursor-pointer w-[200px] right-[20px] bg-white top-[55px] px-2 h-[220px] shadow-lg border border-gray-50 gap-2 justify-start items-start flex flex-col">
             <span @click="$router.push('/reports')" class="mx-3">View reports</span>
 
-            <span class="hover:text-gr-300 hover:text-gray-600  mx-3">Create Branches</span>
+            <span @click="$router.push('/create-branches')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Create
+                Branches</span>
             <span @click="$router.push('/create-report')" class="mx-3">Create reports</span>
             <span @click="handleLogOut" class="hover:text-red-300  mx-3">Log out</span>
         </div>

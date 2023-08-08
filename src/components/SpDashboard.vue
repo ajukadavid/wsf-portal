@@ -7,7 +7,7 @@ import zoneForm from './zoneForm.vue'
 import areaForm from './areaForm.vue';
 import { useAppStore } from '../stores/appStore'
 import CellForm from './cellForm.vue';
-
+import { getItemWithExpiry } from '../composables/auth/useAuth'
 
 const $router = useRouter()
 const store = useAppStore()
@@ -15,7 +15,8 @@ const showModal = ref(false)
 const modalAction = ref('')
 
 const user = computed(() => {
-  return store.user
+  let b = getItemWithExpiry("userName")
+  return b
 })
 
 
@@ -45,7 +46,7 @@ onMounted(() => {
   <div class="h-screen">
     <div class="flex mt-10 mx-10 flex-col">
       <div>
-        <span class="text-4xl font-bold">Hello, {{ user.lastName }}!</span>
+        <span class="text-4xl font-bold">Hello, {{ user! }}!</span>
       </div>
       <div class="w-full flex flex-col items-center justify-between gap-7 mt-5">
         <div @click="handleOpenModal('Province')"
