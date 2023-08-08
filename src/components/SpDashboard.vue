@@ -43,8 +43,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-screen">
-    <div class="flex mt-10 mx-10 flex-col">
+  <div class="h-screen flex mt-20 justify-center">
+    <div class="flex mx-10 flex-col">
       <div>
         <span class="text-4xl font-bold">Hello, {{ user! }}!</span>
       </div>
