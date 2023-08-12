@@ -143,8 +143,8 @@ export async function getReports(
   CellCode?: string,
   from?: string,
   to?: string,
-  PageNumber?: string,
-  PageSize?: string,
+  PageNumber?: number,
+  PageSize?: number,
 ): Promise<any> {
   const apiUrl = `${BASE_URL}/Reports/GetReports`;
   const queryParams: any = {
