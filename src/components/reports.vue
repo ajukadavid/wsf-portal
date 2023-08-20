@@ -9,7 +9,7 @@ const branches = ref<null>()
 const isLoading = ref(false)
 onMounted(() => {
     isLoading.value = true
-    let b = getReports("1").then((r) => {
+    let b = getReports().then((r) => {
         branches.value = r.data.items
         isLoading.value = false
     })
