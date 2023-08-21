@@ -35,7 +35,7 @@ onMounted(() => {
   if (!!token) {
     //todo: api call to get user details
   } else {
-    $router.push('/log-in')
+    $router.push('/')
   }
 })
 

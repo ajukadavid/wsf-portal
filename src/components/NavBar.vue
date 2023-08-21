@@ -7,7 +7,7 @@ const $router = useRouter()
 const showDrop = ref(false)
 const handleLogOut = () => {
     localStorage.removeItem('token')
-    $router.push('/log-in')
+    $router.push('/')
 }
 </script>
 
