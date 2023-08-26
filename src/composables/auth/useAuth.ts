@@ -7,7 +7,7 @@ function setItemWithExpiry(key:string, value:string, expiryTimeInMinutes:number)
     value: value,
     expiry: expiryTimestamp
   };
-  localStorage.setItem(key, JSON.stringify(item));
+  return localStorage.setItem(key, JSON.stringify(item));
 }
 
 export const handleLogin = async (userName:string, password:string, user:any) => {
@@ -16,7 +16,8 @@ export const handleLogin = async (userName:string, password:string, user:any) =>
         password
       })
       .then(function (response) {
-        setItemWithExpiry("token", response.data.token, 5760)
+       let s = setItemWithExpiry("token", response.data.token, 5760)
+       console.log(s)
         setItemWithExpiry("userName", response.data.fullName, 5760)
 
         user.fullName = response.data.fullName
