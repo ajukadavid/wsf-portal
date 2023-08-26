@@ -27,7 +27,6 @@ const handleRouteChange = (route: string) => {
                 class="cursor-pointer material-icons my-auto text-gray-700 text-5xl fw-900 ">
                 account_circle
             </span>
-
         </div>
         <div v-if="showDrop"
             class="absolute z-20 cursor-pointer w-[200px] right-[20px] bg-white top-[55px] px-2 h-[220px] shadow-lg border border-gray-50 gap-2 justify-start items-start flex flex-col">

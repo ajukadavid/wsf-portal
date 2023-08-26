@@ -1,18 +1,28 @@
 <script lang="ts" setup>
 import { getReports } from '../composables/services/apiService';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import spinner from './spinner.vue';
 
 const branches = ref<null>()
 const isLoading = ref(false)
+
+const reportOptions = reactive({
+    ProvinceCode: '',
+})
+
+
 onMounted(() => {
     isLoading.value = true
-    let b = getReports().then((r) => {
-        branches.value = r.data.items
-        isLoading.value = false
-    })
+    getReports(reportOptions)
+        .then(data => {
+            isLoading.value = false
+            branches.value = data.data.items
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 })
 
 </script>

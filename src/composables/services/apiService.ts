@@ -135,31 +135,13 @@ export const getAllCells = async (zoneCode: string) => {
 }
 
 //REPORTS
-
-export async function getReports(
-  ProvinceCode?: string,
-  AreaCode?: string,
-  ZoneCode?: string,
-  CellCode?: string,
-  from?: string,
-  to?: string,
-  PageNumber?: number,
-  PageSize?: number,
-): Promise<any> {
-  const apiUrl = `${BASE_URL}/Reports/GetReports`;
-  const queryParams: any = {
-    ProvinceCode,
-    AreaCode,
-    ZoneCode,
-    CellCode,
-    from,
-    to,
-    PageNumber,
-    PageSize,
-  };
-
+async function fetchDataWithParams(apiUrl:any, queryParams:any) {
   const url = new URL(apiUrl);
-  Object.keys(queryParams).forEach(key => queryParams[key] && url.searchParams.append(key, queryParams[key]));
+  Object.keys(queryParams).forEach(key => {
+    if (queryParams[key]) {
+      url.searchParams.append(key, queryParams[key]);
+    }
+  });
 
   try {
     const response = await fetch(url, {
@@ -176,11 +158,20 @@ export async function getReports(
     }
 
     return response.json();
-  } catch (err) {
-    console.error('Error:', err);
-    return err;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
   }
 }
+
+export async function getReports(reportOptions:any) {
+  const apiUrl = `${BASE_URL}/Reports/GetReports`;
+
+  return fetchDataWithParams(apiUrl, reportOptions);
+}
+
+// Example usage
+
 
 
 export const createReport = async (
