@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import { createCell, getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport } from '../composables/services/apiService'
+import { getAllProvinces, getAllAreas, getAllZones, getAllCells, createReport } from '../composables/services/apiService'
 import spinner from './spinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
 const areaCode = ref('')
 const provinceCode = ref('')
-const cellName = ref('')
-const cellAddress = ref('')
 const cellCode = ref('')
 const male = ref<number>(0)
 const female = ref<number>(0)
