@@ -83,10 +83,33 @@ onMounted(() => {
 const handleCreateReport = async () => {
     loading.value = true
     try {
-        const response = await createReport(provinceCode.value, areaCode.value, zoneCode.value, cellCode.value, male.value.toString(), female.value.toString(), children.value.toString(), newComers.value.toString(), testimonies.value, total.value)
+        const response = await createReport(
+            provinceCode.value,
+            areaCode.value,
+            zoneCode.value,
+            cellCode.value,
+            male.value.toString(),
+            female.value.toString(),
+            children.value.toString(),
+            newComers.value.toString(),
+            testimonies.value,
+            total.value
+        )
         if (response.status = "Ok") {
             showSuccess.value = true
             successMsg.value = response.responseDescription
+            provinceCode.value = ''
+            areaCode.value = ''
+            zoneCode.value = ''
+            cellCode.value = ''
+            male.value = 0
+            female.value = 0
+            children.value = 0
+            newComers.value = ''
+            testimonies.value = ''
+            setTimeout(() => {
+                showSuccess.value = false
+            }, 10000);
         } else {
             ErrMsg.value = response.response.data.responseDescription
 
