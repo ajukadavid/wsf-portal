@@ -10,6 +10,7 @@ import { onMounted, ref, reactive } from 'vue';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import spinner from './spinner.vue';
+import paginator from './paginator.vue';
 import WsfDropdown from './wsfDropdown.vue';
 
 const branches = ref<any>([])
@@ -18,7 +19,7 @@ const provinces = ref<any>([])
 const areas = ref<any>([])
 const zones = ref<any>([])
 const cells = ref<any>([])
-
+const paginatorData = ref<any>({})
 const reportOptions = reactive({
     provinceCode: '',
     areaCode: '',
@@ -121,6 +122,8 @@ onMounted(() => {
         .then(data => {
             isLoading.value = false
             branches.value = data.data.items
+            paginatorData.value = data.data
+            delete paginatorData.value.items
         })
         .catch(error => {
             console.error('Error:', error);
@@ -131,17 +134,22 @@ onMounted(() => {
 
 <template>
     <div class="p-4 px-10 w-full">
-        <div class="w-full flex">
-            <span>Filter By:</span>
-            <div class="ml-4 flex items-center justify-center gap-5">
-                <WsfDropdown title="Province Code: " :items="provinces" @update:value="provinceFilter" />
-                <WsfDropdown title="Area Code: " :items="areas" @update:value="areaFilter" />
-                <WsfDropdown title="Zone Code: " :items="zones" @update:value="zoneFilter" />
-                <WsfDropdown title="Cell Code: " :items="cells" @update:value="cellFilter" />
-                <button
-                    class="border border-red-700  h-fit px-4 py-2 mt-8 rounded hover:bg-red-700 hover:text-white font-bold"
-                    @click="handleResetFilter">Reset
-                    filter</button>
+        <div class="w-full flex justify-between">
+            <div class="flex">
+                <span>Filter By:</span>
+                <div class="ml-4 flex items-center justify-center gap-5">
+                    <WsfDropdown title="Province Code: " :items="provinces" @update:value="provinceFilter" />
+                    <WsfDropdown title="Area Code: " :items="areas" @update:value="areaFilter" />
+                    <WsfDropdown title="Zone Code: " :items="zones" @update:value="zoneFilter" />
+                    <WsfDropdown title="Cell Code: " :items="cells" @update:value="cellFilter" />
+                    <button
+                        class="border border-red-700  h-fit px-4 py-2 mt-8 rounded hover:bg-red-700 hover:text-white font-bold"
+                        @click="handleResetFilter">Reset
+                        filter</button>
+                </div>
+            </div>
+            <div>
+                <paginator :pagObj="paginatorData" />
             </div>
         </div>
         <div v-if="!isLoading && branches.length" class="mt-10 border shadow-lg">
