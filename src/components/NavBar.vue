@@ -37,7 +37,7 @@ const handleRouteChange = (route: string) => {
             <span @click="handleRouteChange('/manage-branches')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Manage
                 Branches</span>
             <span @click="handleRouteChange('/create-report')" class="mx-3">Create reports</span>
-            <span @click="handleRouteChange('/create-users')" class="mx-3">Create reports</span>
+            <span @click="handleRouteChange('/create-users')" class="mx-3">Create Users</span>
 
             <span @click="handleLogOut" class="hover:text-red-300  mx-3">Log out</span>
         </div>

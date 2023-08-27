@@ -59,7 +59,7 @@ onMounted(() => {
     getProvince()
 })
 
-const handleCreateZone = async () => {
+const handleCreateCell = async () => {
     loading.value = true
     try {
         const response = await createCell(provinceCode.value, areaCode.value, zoneCode.value, cellCode.value, cellName.value, cellAddress.value)
@@ -127,7 +127,7 @@ const handleCreateZone = async () => {
             </form>
             <div class="flex items-center justify-center mb-3">
                 <spinner v-if="loading" class="mt-4" />
-                <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
+                <button v-else @click="handleCreateCell" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create
                     Cell</button>
             </div>

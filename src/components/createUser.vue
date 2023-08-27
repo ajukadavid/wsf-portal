@@ -1,20 +1,24 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { createCell, getAllProvinces, getAllAreas, getAllZones } from '../composables/services/apiService'
+import { getAllProvinces, getAllAreas, getAllZones } from '../composables/services/apiService'
 import spinner from './spinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
 const areaCode = ref('')
 const provinceCode = ref('')
-const cellName = ref('')
-const cellAddress = ref('')
-const cellCode = ref('')
+const surname = ref('')
+const firstName = ref('')
+const email = ref('')
+const phone = ref('')
+const password = ref('')
 const zoneCode = ref('')
+const userRole = ref('')
 const ErrMsg = ref('')
 const showSuccess = ref(false)
 const provinces = ref<any>([])
 const areas = ref<any>([])
 const zones = ref<any>([])
+const userRoles = ref(['Admin', 'User'])
 
 const successMsg = ref('')
 
@@ -62,14 +66,7 @@ onMounted(() => {
 const handleCreateZone = async () => {
     loading.value = true
     try {
-        const response = await createCell(provinceCode.value, areaCode.value, zoneCode.value, cellCode.value, cellName.value, cellAddress.value)
-        if (response.status = "Ok") {
-            showSuccess.value = true
-            successMsg.value = response.responseDescription
-        } else {
-            ErrMsg.value = response.response.data.responseDescription
 
-        }
     } catch {
         //
     }
@@ -81,7 +78,7 @@ const handleCreateZone = async () => {
 <template>
     <div class="w-full">
         <div v-if="!showSuccess">
-            <form @click.prevent="" class="flex flex-col  px-8 gap-5 w-full pt-40  mt-10 items-center justify-center">
+            <form @click.prevent="" class="flex flex-col  px-8 gap-5 w-full   mt-10 items-center justify-center">
                 <div class="w-full">
                     <label for="provinceCode">
                         <WsfDropdown title="Province Code: " :items="provinces" @update:value="handleSetProvince" />
@@ -99,25 +96,47 @@ const handleCreateZone = async () => {
                     </label>
                 </div>
                 <div class="w-full">
-                    <label for="cellCode">
-                        Cell Code:
-                        <input v-model="cellCode" type="text" id="cellCode"
-                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Code" />
+                    <label for="surname">
+                        Surname:
+                        <input v-model="surname" type="text" id="surname"
+                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="user surname" />
                     </label>
                 </div>
                 <div class="w-full">
-                    <label for="cellName">
-                        Cell Name:
-                        <input v-model="cellName" type="text" id="cellName"
-                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="Cell Name" />
+                    <label for="firstName">
+                        First Name:
+                        <input v-model="firstName" type="text" id="firstName"
+                            class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="User" />
                     </label>
                 </div>
 
                 <div class="w-full">
-                    <label for="zoneAddress">
-                        Cell Address:
-                        <input v-model="cellAddress" type="text" id="cellAddress"
-                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="Cell Address" />
+                    <label for="email">
+                        Email:
+                        <input v-model="email" type="text" id="email"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User email" />
+                    </label>
+                </div>
+
+                <div class="w-full">
+                    <label for="phone">
+                        Phone:
+                        <input v-model="phone" type="text" id="phone"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User phone" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="Password">
+                        Password:
+                        <input v-model="password" type="text" id="phone"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User password" />
+                    </label>
+                </div>
+                <div class="w-full">
+                    <label for="phone">
+                        User Role:
+                        <input v-model="userRole" type="text" id="phone"
+                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User password" />
                     </label>
                 </div>
                 <div class="text-red-500">
@@ -129,7 +148,7 @@ const handleCreateZone = async () => {
                 <spinner v-if="loading" class="mt-4" />
                 <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create
-                    Cell</button>
+                    User</button>
             </div>
         </div>
 
