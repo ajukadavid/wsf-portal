@@ -109,7 +109,7 @@ const handleCreateReport = async () => {
             testimonies.value = ''
             setTimeout(() => {
                 showSuccess.value = false
-            }, 10000);
+            }, 2000);
         } else {
             ErrMsg.value = response.response.data.responseDescription
 
@@ -188,8 +188,9 @@ const handleCreateReport = async () => {
                 <div class="w-full">
                     <label for="testimonies">
                         Total:
-                        <input v-model="total" type="text" id="total"
-                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="total" />
+                        <input v-model="total" disabled type="text" id="total"
+                            class="p-4 outline-red-600 bg-slate-200 cursor-not-allowed w-full shadow-md rounded border-0"
+                            placeholder="total" />
                     </label>
                 </div>
                 <div class="text-red-500">

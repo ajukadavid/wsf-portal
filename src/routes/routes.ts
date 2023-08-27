@@ -3,6 +3,7 @@ import reports from '../components/reports.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../components/Login.vue'
 import createReport from '../components/createReport.vue'
+import createUser from '../components/createUser.vue'
 
 export const routes = [
     {
@@ -29,6 +30,11 @@ export const routes = [
         path: '/', 
         name: 'Login',
         component: Login
+    },
+    {
+        path: '/create-users', 
+        name: 'createUsers',
+        component: createUser
     },
 
 ]

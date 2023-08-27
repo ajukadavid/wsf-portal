@@ -21,7 +21,7 @@ const handleRouteChange = (route: string) => {
         <div class="flex justify-between px-5">
             <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 p-3" />
             <div>
-                <p class="mt-8 text-sm mr-20 w-full">Living Faith Church WSF Platform</p>
+                <p class="mt-8 text-base mr-20 w-full">Living Faith Church WSF Platform</p>
             </div>
             <span @click="showDrop = !showDrop"
                 class="cursor-pointer material-icons my-auto text-gray-700 text-5xl fw-900 ">
@@ -34,7 +34,11 @@ const handleRouteChange = (route: string) => {
 
             <span @click="handleRouteChange('/create-branches')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Create
                 Branches</span>
+            <span @click="handleRouteChange('/manage-branches')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Manage
+                Branches</span>
             <span @click="handleRouteChange('/create-report')" class="mx-3">Create reports</span>
+            <span @click="handleRouteChange('/create-users')" class="mx-3">Create reports</span>
+
             <span @click="handleLogOut" class="hover:text-red-300  mx-3">Log out</span>
         </div>
     </div>
