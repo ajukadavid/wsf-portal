@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getAllProvinces, getAllAreas, getAllZones } from '../composables/services/apiService'
+import {
+    getAllProvinces,
+    getAllAreas,
+    getAllZones,
+    createUser
+} from '../composables/services/apiService'
 import spinner from './spinner.vue';
 import WsfDropdown from './wsfDropdown.vue';
 const loading = ref(false)
@@ -18,7 +23,17 @@ const showSuccess = ref(false)
 const provinces = ref<any>([])
 const areas = ref<any>([])
 const zones = ref<any>([])
-const userRoles = ref(['Admin', 'User'])
+const userRoles = ref(
+    [
+        {
+            name: 'Admin',
+            code: 'admin'
+        },
+        {
+            name: 'User',
+            code: 'user'
+        }
+    ])
 
 const successMsg = ref('')
 
@@ -58,20 +73,29 @@ const handleSetArea = async (code: string) => {
     }
 }
 
-
-onMounted(() => {
-    getProvince()
-})
-
-const handleCreateZone = async () => {
+const handleCreateUser = async () => {
     loading.value = true
     try {
+        const response = await createUser(provinceCode.value, areaCode.value, zoneCode.value, surname.value, firstName.value, email.value, phone.value, password.value, userRole.value)
+        if (response.status = "Ok") {
+            showSuccess.value = true
+            successMsg.value = response.responseDescription
+        } else {
+            ErrMsg.value = response.response.data.responseDescription
 
+        }
     } catch {
         //
     }
     loading.value = false
 }
+
+
+onMounted(() => {
+    getProvince()
+})
+
+
 
 </script>
 
@@ -109,11 +133,10 @@ const handleCreateZone = async () => {
                             class="p-4 w-full outline-red-600 shadow-md rounded border-0" placeholder="User" />
                     </label>
                 </div>
-
                 <div class="w-full">
                     <label for="email">
                         Email:
-                        <input v-model="email" type="text" id="email"
+                        <input v-model="email" type="email" id="email"
                             class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User email" />
                     </label>
                 </div>
@@ -128,15 +151,14 @@ const handleCreateZone = async () => {
                 <div class="w-full">
                     <label for="Password">
                         Password:
-                        <input v-model="password" type="text" id="phone"
+                        <input v-model="password" type="password" id="password"
                             class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User password" />
                     </label>
                 </div>
                 <div class="w-full">
-                    <label for="phone">
-                        User Role:
-                        <input v-model="userRole" type="text" id="phone"
-                            class="p-4 outline-red-600 w-full shadow-md rounded border-0" placeholder="User password" />
+                    <label for="userRole">
+                        <WsfDropdown title="User role: " :items="userRoles"
+                            @update:value="((code: string) => userRole = code)" />
                     </label>
                 </div>
                 <div class="text-red-500">
@@ -146,7 +168,7 @@ const handleCreateZone = async () => {
             </form>
             <div class="flex items-center justify-center mb-3">
                 <spinner v-if="loading" class="mt-4" />
-                <button v-else @click="handleCreateZone" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
+                <button v-else @click="handleCreateUser" class="bg-accentColor rounded font-bold my-5 text-white px-5 py-4">
                     Create
                     User</button>
             </div>

@@ -172,8 +172,6 @@ export async function getReports(reportOptions:any) {
 
 // Example usage
 
-
-
 export const createReport = async (
   provinceCode: string, 
   areaCode: string, 
@@ -204,3 +202,37 @@ export const createReport = async (
     return error
   }
 };
+
+
+//USERS
+
+
+export const createUser = async (
+  provinceCode: string, 
+  areaCode: string, 
+  zoneCode: string,
+  surname:string,
+  firstName:string, 
+  email: string,
+  phone:string,
+  password:string,
+  userRole:string,
+  ) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/Users/CreateUsers`, {
+      provinceCode,
+      areaCode,
+      zoneCode,
+      surname,
+      firstName, 
+      email,
+      phone,
+      password,
+      userRole,
+    }, config);
+    return response.data; 
+  } catch (error) {
+    return error
+  }
+};
+
