@@ -10,26 +10,31 @@ function setItemWithExpiry(key:string, value:string, expiryTimeInMinutes:number)
   return localStorage.setItem(key, JSON.stringify(item));
 }
 
-export const handleLogin = async (userName:string, password:string, user:any) => {
-   await axios.post(`http://102.67.32.92:8089/api/authorization/login`, {
+export const handleLogin = async (userName:string, password:string) => {
+  try {
+    const response = await axios.post(
+      'http://102.67.32.92:8089/api/authorization/login',
+      {
         userName,
         password
-      })
-      .then(function (response) {
-       let s = setItemWithExpiry("token", response.data.token, 5760)
-       console.log(s)
-        setItemWithExpiry("userName", response.data.fullName, 5760)
+      }
+    );
 
-        user.fullName = response.data.fullName
-        user.id = response.data.userId
-        user.firstName = response.data.firstName
-      })
-      .catch(function (error) {
-        // console.log(error);
-      })
+    const user = {
+      fullName: response.data.fullName,
+      id: response.data.userId,
+      firstName: response.data.firstName
+    };
 
-      return user
-}
+    setItemWithExpiry('token', response.data.token, 5760);
+    setItemWithExpiry('userName', response.data.fullName, 5760);
+
+    return user;
+  } catch (error) {
+    // Handle error if needed
+    return error;
+  }
+};
 
 export const getItemWithExpiry = (key:string) => {
   const itemString = localStorage.getItem(key);

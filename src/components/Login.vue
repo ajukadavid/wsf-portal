@@ -11,20 +11,33 @@ const $router = useRouter()
 const store = useAppStore()
 const loading = ref(false)
 
-const userLogin = async () => {
-  loading.value = true
-  let user = {
-    firstName: '',
-    fullName: '',
-    id: ''
+let user = {
+  firstName: '',
+  fullName: '',
+  id: ''
 
-  }
-  const data = await handleLogin(email.value, password.value, user)
-  store.user.lastName = data.fullName
-  store.user.id = data.id
-  loading.value = false
-  $router.push('/reports')
 }
+
+// store.user.lastName = data.fullName
+// store.user.id = data.id
+
+async function loginUser(username: string, password: string) {
+  try {
+    const data = await handleLogin(username, password)
+    console.log(data)
+    // if (data.fullName) {
+    //   // Login was successful, do something with the user object
+    //   console.log('Logged in successfully:', user.fullName);
+    // } else {
+    //   // Handle error or login failure
+    //   console.error('Login failed:', user);
+    // }
+  } catch (error) {
+    // Handle any unexpected errors
+    console.error('An unexpected error occurred:', error);
+  }
+}
+
 
 </script>
 
@@ -43,7 +56,7 @@ const userLogin = async () => {
       </div>
       <div class="flex items-center justify-center">
         <spinner v-if="loading" class="mt-8" />
-        <button v-else @click="userLogin" type="submit"
+        <button v-else @click="loginUser(email, password)" type="submit"
           class="bg-buttonColor ml-2 rounded font-bold text-white px-32 mt-8 py-4">
           Submit
         </button>
