@@ -9,15 +9,18 @@ const props = withDefaults(defineProps<Props>(), {})
 
 <template>
     <div class="flex items-center justify-center mt-8">
-        <div class="flex">
-            <span class="material-icons cursor-pointer text-4xl">
+        <div class="flex items-center">
+            <span v-if="pagObj.hasPrevious" class="material-icons text-blue-800 cursor-pointer text-3xl">
                 arrow_left
             </span>
-            <button class="border border-red-700 hover:bg-red-700 hover:text-white text-black px-2 rounded-full font-bold"
+            <button
+                class="border text-sm mx-1 border-red-700 h-fit px-1 hover:bg-red-700 hover:text-white text-black rounded-full font-bold"
                 v-for="page in pagObj.totalPages">
-                {{ page
-                }}</button>
-            <span class="material-icons cursor-pointer   text-4xl">
+                {{ page }}</button>
+            <div>
+
+            </div>
+            <span v-if="pagObj.hasNext" class="material-icons text-blue-800 cursor-pointer text-3xl">
                 arrow_right
             </span>
         </div>

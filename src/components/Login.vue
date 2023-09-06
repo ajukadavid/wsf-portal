@@ -15,7 +15,6 @@ let user = {
   firstName: '',
   fullName: '',
   id: ''
-
 }
 
 // store.user.lastName = data.fullName
@@ -24,14 +23,13 @@ let user = {
 async function loginUser(username: string, password: string) {
   try {
     const data = await handleLogin(username, password)
-    console.log(data)
-    // if (data.fullName) {
-    //   // Login was successful, do something with the user object
-    //   console.log('Logged in successfully:', user.fullName);
-    // } else {
-    //   // Handle error or login failure
-    //   console.error('Login failed:', user);
-    // }
+    if (data) {
+      $router.push('/reports')
+      console.log('Logged in successfully:', user.fullName);
+    } else {
+      // Handle error or login failure
+      console.error('Login failed:', user);
+    }
   } catch (error) {
     // Handle any unexpected errors
     console.error('An unexpected error occurred:', error);
