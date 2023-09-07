@@ -20,12 +20,27 @@ const areas = ref<any>([])
 const zones = ref<any>([])
 const cells = ref<any>([])
 const paginatorData = ref<any>({})
-const reportOptions = reactive({
-    provinceCode: '',
-    areaCode: '',
-    zoneCode: '',
-    cellCode: ''
+const dataLength = ref<number>()
+
+const reportOptions = reactive<any>({
+    ProvinceCode: '',
+    AreaCode: '',
+    ZoneCode: '',
+    CellCode: '',
+    to: '',
+    from: '',
+    PageNumber: '',
+    PageSize: ''
 })
+
+const handleSetReport = (data: any) => {
+    isLoading.value = false
+    branches.value = data.data.items
+    dataLength.value = data.data.items.length
+    paginatorData.value = data.data
+    delete paginatorData.value.items
+}
+
 
 const getProvince = async () => {
     try {
@@ -38,10 +53,10 @@ const getProvince = async () => {
 
 
 const provinceFilter = async (code: string) => {
-    reportOptions.provinceCode = code
+    reportOptions.ProvinceCode = code
     try {
-        if (!!reportOptions.provinceCode) {
-            let res = await getAllAreas(reportOptions.provinceCode)
+        if (!!reportOptions.ProvinceCode) {
+            let res = await getAllAreas(reportOptions.ProvinceCode)
             getReports(reportOptions)
                 .then(data => {
                     isLoading.value = false
@@ -59,10 +74,10 @@ const provinceFilter = async (code: string) => {
 }
 
 const areaFilter = async (code: string) => {
-    reportOptions.areaCode = code
+    reportOptions.AreaCode = code
     try {
-        if (!!reportOptions.areaCode) {
-            let res = await getAllZones(reportOptions.areaCode)
+        if (!!reportOptions.AreaCode) {
+            let res = await getAllZones(reportOptions.AreaCode)
             zones.value = res.data
         }
 
@@ -73,10 +88,10 @@ const areaFilter = async (code: string) => {
 
 
 const zoneFilter = async (code: string) => {
-    reportOptions.zoneCode = code
+    reportOptions.ZoneCode = code
     try {
-        if (!!reportOptions.zoneCode) {
-            let res = await getAllCells(reportOptions.zoneCode)
+        if (!!reportOptions.ZoneCode) {
+            let res = await getAllCells(reportOptions.ZoneCode)
             cells.value = res.data
         }
 
@@ -86,10 +101,10 @@ const zoneFilter = async (code: string) => {
 }
 
 const cellFilter = async (code: string) => {
-    reportOptions.zoneCode = code
+    reportOptions.ZoneCode = code
     try {
-        if (!!reportOptions.zoneCode) {
-            let res = await getAllCells(reportOptions.zoneCode)
+        if (!!reportOptions.ZoneCode) {
+            let res = await getAllCells(reportOptions.ZoneCode)
             cells.value = res.data
         }
 
@@ -100,10 +115,10 @@ const cellFilter = async (code: string) => {
 
 const handleResetFilter = () => {
     isLoading.value = true
-    reportOptions.areaCode = ""
-    reportOptions.cellCode = ""
-    reportOptions.provinceCode = ""
-    reportOptions.zoneCode = ""
+    reportOptions.AreaCode = ""
+    reportOptions.CellCode = ""
+    reportOptions.ProvinceCode = ""
+    reportOptions.ZoneCode = ""
     getReports(reportOptions)
         .then(data => {
             isLoading.value = false
@@ -113,6 +128,43 @@ const handleResetFilter = () => {
             console.error('Error:', error);
         });
 
+}
+
+const handleUpdatePage = (page: string) => {
+    reportOptions.PageNumber = Number(page)
+    isLoading.value = true
+    getReports(reportOptions)
+        .then(data => {
+            handleSetReport(data)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+const handleGoback = (page: string) => {
+    reportOptions.PageNumber = Number(page) - 1
+    isLoading.value = true
+    getReports(reportOptions)
+        .then(data => {
+            handleSetReport(data)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+const handleForward = (page: string) => {
+    reportOptions.PageNumber = Number(page) + 1
+    isLoading.value = true
+    getReports(reportOptions)
+        .then(data => {
+            handleSetReport(data)
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 onMounted(() => {
@@ -149,7 +201,8 @@ onMounted(() => {
                 </div>
             </div>
             <div>
-                <paginator :pagObj="paginatorData" />
+                <paginator :data-length="dataLength" @update:forward="handleForward" @update:back="handleGoback"
+                    :pagObj="paginatorData" @update:page="handleUpdatePage" />
             </div>
         </div>
         <div v-if="!isLoading && branches.length" class="mt-10 border shadow-lg">
