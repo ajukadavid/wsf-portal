@@ -20,7 +20,7 @@ const areas = ref<any>([])
 const zones = ref<any>([])
 const cells = ref<any>([])
 const paginatorData = ref<any>({})
-const dataLength = ref<number>()
+const dataLength = ref<number>(0)
 
 const reportOptions = reactive<any>({
     ProvinceCode: '',
@@ -172,10 +172,7 @@ onMounted(() => {
     isLoading.value = true
     getReports(reportOptions)
         .then(data => {
-            isLoading.value = false
-            branches.value = data.data.items
-            paginatorData.value = data.data
-            delete paginatorData.value.items
+            handleSetReport(data)
         })
         .catch(error => {
             console.error('Error:', error);
