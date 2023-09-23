@@ -17,15 +17,14 @@ let user = {
   id: ''
 }
 
-// store.user.lastName = data.fullName
-// store.user.id = data.id
 
 async function loginUser(username: string, password: string) {
   try {
     const data = await handleLogin(username, password)
     if (data) {
+      console.log(data)
+
       $router.push('/reports')
-      console.log('Logged in successfully:', user.fullName);
     } else {
       // Handle error or login failure
       console.error('Login failed:', user);

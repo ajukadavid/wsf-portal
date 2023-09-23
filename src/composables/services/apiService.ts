@@ -1,4 +1,4 @@
-const BASE_URL ="http://102.67.32.92:8089/api"
+const BASE_URL ="https://102.67.32.92:8089/api"
 import axios from "axios"
 import { getItemWithExpiry } from "../auth/useAuth";
 

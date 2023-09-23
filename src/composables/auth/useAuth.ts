@@ -13,7 +13,7 @@ function setItemWithExpiry(key:string, value:string, expiryTimeInMinutes:number)
 export const handleLogin = async (userName:string, password:string) => {
   try {
     const response = await axios.post(
-      'http://102.67.32.92:8089/api/authorization/login',
+      'https://102.67.32.92:8089/api/authorization/login',
       {
         userName,
         password

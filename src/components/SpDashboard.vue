@@ -43,12 +43,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-screen flex mt-20 justify-center">
+  <div class="h-screen flex mt-20 w-fulljustify-center">
     <div class="flex mx-10 flex-col">
       <div>
         <span class="text-4xl font-bold">Hello, {{ user! }}!</span>
       </div>
-      <div class="w-full flex flex-col items-center justify-between gap-7 mt-5">
+      <div
+        class="w-full flex lg:border lg:border-red-400 pr-10 lg:flex-row flex-col items-center justify-between gap-7 mt-5">
         <div @click="handleOpenModal('Province')"
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons text-4xl">
