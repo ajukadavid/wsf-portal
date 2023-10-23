@@ -4,7 +4,7 @@ import SignUp from '../views/SignUp.vue'
 import Login from '../components/Login.vue'
 import createReport from '../components/createReport.vue'
 import createUser from '../components/createUser.vue'
-
+import manageBranches from '../components/manageBranches.vue'
 export const routes = [
     {
         path: '/create-branches', 
@@ -36,5 +36,9 @@ export const routes = [
         name: 'createUsers',
         component: createUser
     },
-
+    {
+        path: '/manage-branches', 
+        name: 'manageBranches',
+        component: manageBranches
+    },
 ]
