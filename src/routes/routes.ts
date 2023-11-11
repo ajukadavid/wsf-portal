@@ -32,7 +32,7 @@ export const routes = [
         component: Login
     },
     {
-        path: '/create-users', 
+        path: '/create-and-manage-users', 
         name: 'createUsers',
         component: createUser
     },

@@ -109,42 +109,42 @@ onMounted(() => {
       </div>
       <div class="flex mt-20 gap-4 lg:flex-row flex-col items-center justify-center">
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             child_care
           </span>
           <span class="text-2xl">Children</span>
           <span>{{ dashData.children }}</span>
         </div>
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             woman
           </span>
           <span class="text-2xl">Females</span>
           <span>{{ dashData.female }}</span>
         </div>
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             man
           </span>
           <span class="text-2xl">Males</span>
           <span>{{ dashData.male }}</span>
         </div>
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             grade
           </span>
           <span class="text-2xl">New Comers</span>
           <span>{{ dashData.newComers }}</span>
         </div>
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             campaign
           </span>
           <span class="text-2xl">Testimonies</span>
           <span>{{ dashData.testimonies }}</span>
         </div>
         <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
-          <span class="material-icons text-4xl">
+          <span class="material-icons text-4xl font-bold">
             done
           </span>
           <span class="text-2xl">Total</span>
