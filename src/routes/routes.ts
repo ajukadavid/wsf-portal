@@ -7,7 +7,7 @@ import createUser from '../components/createUser.vue'
 import manageBranches from '../components/manageBranches.vue'
 export const routes = [
     {
-        path: '/create-branches', 
+        path: '/dashboard', 
         name: 'SpDashboard', 
         component: SpDashboard
     },

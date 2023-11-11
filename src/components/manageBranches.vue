@@ -2,9 +2,7 @@
 import { onMounted, ref, reactive } from 'vue';
 import {
     getAllProvinces,
-    getAllAreas,
-    getAllZones,
-    getAllCells,
+    getDashboardData
 } from '../composables/services/apiService';
 import WsfDropdown from './wsfDropdown.vue';
 
@@ -129,7 +127,7 @@ onMounted(() => {
                     <WsfDropdown title="Zone Code: " :items="zones" @update:value="zoneFilter" />
                     <WsfDropdown title="Cell Code: " :items="cells" @update:value="cellFilter" />
                     <button
-                        class="border border-red-700  h-fit px-4 py-2 mt-8 rounded hover:bg-red-700 hover:text-white font-bold"
+                        class="border   h-fit px-4 py-2 mt-8 rounded hover:bg-red-700 hover:text-white font-bold"
                         @click="handleResetFilter">Reset
                         filter</button>
                 </div>

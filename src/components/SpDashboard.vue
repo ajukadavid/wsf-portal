@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, ref, reactive } from 'vue'
 import { useRouter } from "vue-router";
 import createModal from './createModal.vue'
 import provinceForm from './provinceForm.vue'
@@ -8,11 +8,22 @@ import areaForm from './areaForm.vue';
 import { useAppStore } from '../stores/appStore'
 import CellForm from './cellForm.vue';
 import { getItemWithExpiry } from '../composables/auth/useAuth'
+import { getDashboardData } from '../composables/services/apiService'
 
 const $router = useRouter()
 const store = useAppStore()
 const showModal = ref(false)
 const modalAction = ref('')
+
+let dashData = reactive({
+  children: '',
+  female:'',
+  male:'',
+  newComers: '',
+  testimonies: '',
+  total: ''
+})
+
 
 const user = computed(() => {
   let b = getItemWithExpiry("userName")
@@ -29,8 +40,17 @@ const handleClose = () => {
   showModal.value = false
 }
 
-onMounted(() => {
+const getDashData = async () => {
+  try {
+        let res = await getDashboardData()
+        dashData = res.data
+          } catch {
 
+    }
+}
+
+onMounted(() => {
+  getDashData()
   let token = localStorage.getItem('token')
   if (!!token) {
     //todo: api call to get user details

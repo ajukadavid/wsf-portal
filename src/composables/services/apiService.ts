@@ -236,3 +236,14 @@ export const createUser = async (
   }
 };
 
+///ADMIN DASHBOARD
+
+export const getDashboardData =  async() => {
+  try {
+      const res = await axios.get(`${BASE_URL}/DashBoard/DashBoardByAdmin`, config)
+      return res.data
+  } catch (error) {
+        return error
+  }
+}
+
