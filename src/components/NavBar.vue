@@ -17,7 +17,7 @@ const handleRouteChange = (route: string) => {
 
 
 <template>
-    <div>
+    <div class="shadow-lg fixed  bg-white top-0 left-0 right-0 w-full">
         <div class="flex justify-between px-5">
             <img src="../assets/wsf-logo.png" alt="winners logo" class="h-20 w-20 p-3" />
             <div>

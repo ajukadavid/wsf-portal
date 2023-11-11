@@ -63,13 +63,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-screen flex mt-20 w-fulljustify-center">
+  <div class="h-screen flex mt-28 w-fulljustify-center">
     <div class="flex mx-10 flex-col">
       <div>
         <span class="text-4xl font-bold">Hello, {{ user! }}!</span>
       </div>
       <div
-        class="w-full flex lg:border lg:border-red-400 pr-10 lg:flex-row flex-col items-center justify-between gap-7 mt-5">
+        class="w-full  flex pr-4 gap-3 lg:flex-row flex-col items-center justify-between mt-5">
         <div @click="handleOpenModal('Province')"
           class="flex justify-center items-center text-white shadow-lg hover:animate-pulse gap-3 text-2xl bg-accentColor cursor-pointer border-accentColor w-[300px] h-[100px]">
           <span class="material-icons text-4xl">
@@ -105,6 +105,50 @@ onMounted(() => {
           <span>
             Add Cell
           </span>
+        </div>
+      </div>
+      <div class="flex mt-20 gap-4 lg:flex-row flex-col items-center justify-center">
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            child_care
+          </span>
+          <span class="text-2xl">Children</span>
+          <span>{{ dashData.children }}</span>
+        </div>
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            woman
+          </span>
+          <span class="text-2xl">Females</span>
+          <span>{{ dashData.female }}</span>
+        </div>
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            man
+          </span>
+          <span class="text-2xl">Males</span>
+          <span>{{ dashData.male }}</span>
+        </div>
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            grade
+          </span>
+          <span class="text-2xl">New Comers</span>
+          <span>{{ dashData.newComers }}</span>
+        </div>
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            campaign
+          </span>
+          <span class="text-2xl">Testimonies</span>
+          <span>{{ dashData.testimonies }}</span>
+        </div>
+        <div class="w-[150px] h-[150px] rounded-full flex items-center text-white justify-center flex-col hover:scale-110 cursor-pointer bg-blue-500">
+          <span class="material-icons text-4xl">
+            done
+          </span>
+          <span class="text-2xl">Total</span>
+          <span>{{ dashData.total }}</span>
         </div>
       </div>
     </div>
