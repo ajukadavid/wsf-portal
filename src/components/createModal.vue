@@ -35,7 +35,7 @@ const emit = defineEmits(['update:close', 'update:handleCreate'])
     height: fit-content;
     width: 600px;
     margin-top: 5%;
-    border-radius: 4px;
+    border-radius: 9px;
 }
 
 .close {

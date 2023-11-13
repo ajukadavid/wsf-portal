@@ -30,15 +30,15 @@ const handleRouteChange = (route: string) => {
         </div>
         <div v-if="showDrop"
             class="absolute z-20 cursor-pointer w-[200px] right-[20px] bg-white top-[55px] px-2 h-[220px] shadow-lg border border-gray-50 gap-2 justify-start items-start flex flex-col">
-            <span @click="handleRouteChange('/reports')" class="mx-3">View reports</span>
+            <span @click="handleRouteChange('/reports')" class="hover:bg-gray-800 hover:text-white px-3">View reports</span>
 
-            <span @click="handleRouteChange('/dashboard')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Admin Dashboard</span>
-            <span @click="handleRouteChange('/manage-branches')" class="hover:text-gr-300 hover:text-gray-600  mx-3">Manage
+            <span @click="handleRouteChange('/dashboard')" class="hover:bg-gray-800 hover:text-white px-3">Admin Dashboard</span>
+            <span @click="handleRouteChange('/manage-branches')" class="hover:bg-gray-800 hover:text-white px-3">Manage
                 Branches</span>
-            <span @click="handleRouteChange('/create-report')" class="mx-3">Create reports</span>
-            <span @click="handleRouteChange('/create-and-manage-users')" class="mx-3">Create Users</span>
+            <span @click="handleRouteChange('/create-report')" class="hover:bg-gray-800 hover:text-white px-3">Create reports</span>
+            <span @click="handleRouteChange('/create-and-manage-users')" class="hover:bg-gray-800 hover:text-white px-3">Create and Manage Users</span>
 
-            <span @click="handleLogOut" class="hover:text-red-300  mx-3">Log out</span>
+            <span @click="handleLogOut" class="hover:bg-gray-800 hover:text-white px-3">Log out</span>
         </div>
     </div>
 </template>

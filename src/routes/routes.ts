@@ -3,7 +3,7 @@ import reports from '../components/reports.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../components/Login.vue'
 import createReport from '../components/createReport.vue'
-import createUser from '../components/createUser.vue'
+import manageUsers from '../components/manageUsers.vue'
 import manageBranches from '../components/manageBranches.vue'
 export const routes = [
     {
@@ -33,8 +33,8 @@ export const routes = [
     },
     {
         path: '/create-and-manage-users', 
-        name: 'createUsers',
-        component: createUser
+        name: 'manageUsers',
+        component: manageUsers
     },
     {
         path: '/manage-branches', 
