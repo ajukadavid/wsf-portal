@@ -11,6 +11,7 @@ const $router = useRouter()
 const store = useAppStore()
 const loading = ref(false)
 
+
 let user = {
   firstName: '',
   fullName: '',
@@ -40,6 +41,7 @@ async function loginUser(username: string, password: string) {
 
 <template>
   <main class="grid h-screen place-items-center">
+
     <form @submit.prevent="">
       <div class="grid justify-items-center mb-5">
         <p class="font-extrabold">Log in</p>
